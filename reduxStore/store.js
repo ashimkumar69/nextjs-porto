@@ -2,20 +2,21 @@
 import { useMemo } from "react";
 
 // redux
-import { createStore, applyMiddleware, combineReducers } from "redux";
+import { createStore, applyMiddleware } from "redux";
+// extension
 import { composeWithDevTools } from "redux-devtools-extension";
+// thunk
 import thunkMiddleware from "redux-thunk";
 
-// import
-import { themeReducer } from "./reducers/index";
+// import reducers
+import reducers from "./reducers/index";
 
-const reducers = combineReducers({
-  theme: themeReducer,
-});
+// import initial store
+import initialStateDefault from "./initialState/index";
 
 let store;
 
-function initStore(initialState) {
+function initStore(initialState = initialStateDefault) {
   return createStore(
     reducers,
     initialState,

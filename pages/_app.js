@@ -27,34 +27,36 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <Fragment>
-        <Head>
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width"
-          />
-          <title>Portfolio - My</title>
+      <Head>
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
+        <title>Portfolio - My</title>
 
-          <meta
-            name="description"
-            content="Portfolio - My is a single page landing page template"
-          />
-          <meta name="keywords" content="nextjs, material-ui, portfolio" />
-          <meta name="author" content="ASK" />
+        <meta
+          name="description"
+          content="Portfolio - My is a single page landing page template"
+        />
+        <meta name="keywords" content="nextjs, material-ui, portfolio" />
+        <meta name="author" content="ASK" />
 
-          {/* google font */}
-          <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-          ></link>
-        </Head>
+        {/* google font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet"
+        ></link>
 
-        <ThemeWrapper>
-          <FrontendLayoutMain>
-            <Component {...pageProps} />
-          </FrontendLayoutMain>
-        </ThemeWrapper>
-      </Fragment>
+        {/* fav icon */}
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      </Head>
+
+      <ThemeWrapper>
+        <FrontendLayoutMain>
+          <Component {...pageProps} />
+        </FrontendLayoutMain>
+      </ThemeWrapper>
     </Provider>
   );
 }

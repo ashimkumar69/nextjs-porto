@@ -2,7 +2,7 @@
 import React from "react";
 
 // redux
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 // material
 import CssBaseline from "@material-ui/core/CssBaseline";
