@@ -3,7 +3,7 @@ import React from "react";
 
 // next
 import Image from "next/image";
-
+import Link from "next/link";
 // material
 import Box from "@material-ui/core/Box";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -13,11 +13,12 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
 // import
-import colorToRGBA from "color-to-rgba";
+import Rgba from "color-to-rgba";
 
 const useStyles = makeStyles((theme) => ({
   slider: {
     position: "relative",
+    cursor: "move",
   },
   overlay: {
     position: "absolute",
@@ -25,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     height: "100%",
     width: "100%",
-    backgroundColor: colorToRGBA(theme.palette.common.black, 0.1),
+    backgroundColor: Rgba(theme.palette.common.black, 0.1),
   },
   color: {
     color: theme.palette.common.white,
   },
   gradient_color: {
     background:
-      "linear-gradient(120deg,#fd4766 20.69%,#7644ff 50.19%,#1c99fe 79.69%)",
+      "linear-gradient(45deg,#fd4766 20.69%,#7644ff 50.19%,#1c99fe 79.69%)",
     backgroundClip: "text",
     "-webkit-background-clip": "text !important",
     color: "transparent",
@@ -55,7 +56,7 @@ function HeroBannerItem() {
   return (
     <Box className={classes.slider}>
       <Image
-        src="/images/hero-banner/1.jpg"
+        src="/images/heroBanner/1.jpg"
         alt="hero banner image"
         width={1900}
         height={700}
@@ -68,10 +69,11 @@ function HeroBannerItem() {
               <Typography component="div">
                 <Box
                   my={0}
-                  fontSize="h6.fontSize"
+                  fontSize="subtitle1.fontSize"
                   fontWeight="fontWeightBold"
+                  letterSpacing={0.5}
                   lineHeight={1}
-                  component="h3"
+                  component="span"
                   className={`${classes.color} ${classes.gradient_color} ${classes.text_uppercase}`}
                 >
                   Web digital designer
@@ -87,10 +89,11 @@ function HeroBannerItem() {
                   Hello, I’m Designer. Welcome to my World.
                 </Box>
               </Typography>
-
-              <HireMeButton variant="contained" color="primary">
-                Hire Me
-              </HireMeButton>
+              <Link href="/login">
+                <HireMeButton component="a" variant="contained" color="primary">
+                  Hire Me
+                </HireMeButton>
+              </Link>
             </Grid>
           </Grid>
         </Container>

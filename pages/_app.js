@@ -1,5 +1,5 @@
 // react
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 // next
@@ -7,13 +7,15 @@ import Head from "next/head";
 
 // import
 import "../styles/globals.scss";
-import FrontendLayoutMain from "../components/layout/frontend-layout-main";
-
+import Layout from "../components/layout/layout";
+import ThemeWrapper from "../components/themeWrapper";
+import ScrollTop from "../components/scrollTop";
+// redux
 import { Provider } from "react-redux";
 import { useStore } from "../reduxStore/store";
-import ThemeWrapper from "../components/themeWrapper";
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
+  const { Component, pageProps } = props;
   // redux
   const store = useStore(pageProps.initialReduxState);
 
@@ -53,9 +55,10 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       <ThemeWrapper>
-        <FrontendLayoutMain>
+        <Layout {...props}>
           <Component {...pageProps} />
-        </FrontendLayoutMain>
+        </Layout>
+        <ScrollTop {...props} />
       </ThemeWrapper>
     </Provider>
   );

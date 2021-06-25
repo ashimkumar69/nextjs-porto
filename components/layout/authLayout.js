@@ -4,15 +4,12 @@ import React, { Fragment } from "react";
 import { Box } from "@material-ui/core";
 
 // import
-import Nav from "../nav";
 import Footer from "../footer";
 
-function FrontendLayoutMain(props) {
+function AuthLayout(props) {
   return (
     <Fragment>
-      <Box component="header">
-        <Nav />
-      </Box>
+      <Box component="header">navbar</Box>
 
       <Box component="main">{props.children}</Box>
 
@@ -23,4 +20,4 @@ function FrontendLayoutMain(props) {
   );
 }
 
-export default FrontendLayoutMain;
+export default AuthLayout;

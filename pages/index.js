@@ -1,18 +1,25 @@
-// material
-import Button from "@material-ui/core/Button";
+// react
 import { Fragment } from "react";
 
 // import
-import HeroBanner from "../components/hero-banner/hero-banner";
+import HeroBanner from "../components/heroBanner/heroBanner";
+import About from "../components/about/about";
+import Services from "../components/services/services";
+import Projects from "../components/projects/projects";
+import Testimonials from "../components/testimonials/testimonials";
+import News from "../components/news/news";
+import Contact from "../components/contact/contact";
 
 export default function Home() {
   return (
     <Fragment>
       <HeroBanner />
-      <h2>Portfolio</h2>
-      <Button variant="contained" color="primary">
-        Hello World
-      </Button>
+      <About />
+      <Services />
+      <Projects />
+      <Testimonials />
+      <News />
+      <Contact />
     </Fragment>
   );
 }
