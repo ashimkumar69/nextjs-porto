@@ -27,7 +27,6 @@ function AccountMenu() {
         aria-haspopup="true"
         onClick={handleMenu}
         color="inherit"
-        edge="end"
       >
         <AccountCircle />
       </IconButton>
@@ -46,6 +45,7 @@ function AccountMenu() {
         open={open}
         onClose={handleClose}
       >
+        <MenuItem onClick={handleClose}>Dashboard</MenuItem>
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
         <MenuItem onClick={handleClose}>Logout</MenuItem>

@@ -36,7 +36,7 @@ function SearchMenu(props) {
 
   return (
     <React.Fragment>
-      <IconButton edge={props.edge} color="inherit" onClick={handleClickOpen}>
+      <IconButton  color="inherit" onClick={handleClickOpen}>
         <SearchIcon />
       </IconButton>
 

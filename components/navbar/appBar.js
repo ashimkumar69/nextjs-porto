@@ -94,9 +94,9 @@ function Nav(props) {
   const classes = useStyles();
   // nextjs
   const router = useRouter();
+  
   // load component cliend site
   const loaded = useLoaded();
-
   // theme color
   const isThemeLight = useSelector((state) => state.theme.themeLight);
   const changeThemeHandler = () => {
