@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 // material
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import
-import AppBar from "./appBar";
+import AppBar from "./appBar/appBar";
 import BottomAppBar from "./bottomAppBar/bottomAppBar";
 function Navbar() {
   // navbar change in breakpoints

@@ -17,12 +17,6 @@ import clsx from "clsx";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
-  root: (props) => ({
-    paddingTop: props.height,
-    [theme.breakpoints.down("md")]: {
-      paddingTop: 0,
-    },
-  }),
   slick_slider: {
     "& > .slick-prev": {
       left: "25px",
@@ -80,13 +74,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HeroBanner() {
-  const onScrollBannerTopHeight = useSelector(
-    (state) => state.onScrollBannerTopHeight.height
-  );
-
-  const props = { height: onScrollBannerTopHeight };
   //material style
-  const classes = useStyles(props);
+  const classes = useStyles();
 
   // slick slider
   const settings = {
@@ -103,11 +92,7 @@ function HeroBanner() {
   };
 
   return (
-    <Box
-      component="section"
-      id="home"
-      className={clsx("back-to-top-anchor", classes.root)}
-    >
+    <Box component="section">
       <Container maxWidth="xl" disableGutters>
         <Slider {...settings} className={classes.slick_slider}>
           <HeroBannerItem />
