@@ -11,7 +11,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Fade from "@material-ui/core/Fade";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import MenuList from "@material-ui/core/MenuList";
 
 // import
 import Scrollspy from "react-scrollspy";
@@ -49,12 +49,6 @@ const menuLists = [
             path: "/reset-password",
             submenu: [],
           },
-          {
-            id: 3,
-            title: "Setting",
-            path: "",
-            submenu: [],
-          },
         ],
       },
       {
@@ -63,26 +57,13 @@ const menuLists = [
         path: "",
         submenu: [
           { id: 1, title: "404 Page", path: "", submenu: [] },
-          { id: 2, title: "500 Page", path: "#contact", submenu: [] },
-
-          {
-            id: 3,
-            title: "Login",
-            path: "/login",
-            submenu: [],
-          },
+          { id: 2, title: "500 Page", path: "", submenu: [] },
         ],
       },
       {
         id: 3,
         title: "Settings",
         path: "",
-        submenu: [],
-      },
-      {
-        id: 4,
-        title: "Login",
-        path: "/login",
         submenu: [],
       },
     ],
@@ -112,11 +93,11 @@ const menuLists = [
             submenu: [
               {
                 id: 1,
-                title: "Contact Level 3",
-                path: "#contact",
+                title: " Level 3",
+                path: "",
                 submenu: [],
               },
-              { id: 2, title: "Login Level 3", path: "/login", submenu: [] },
+              { id: 2, title: " Level 3", path: "", submenu: [] },
               { id: 3, title: "Level 3", path: "", submenu: [] },
             ],
           },
@@ -306,157 +287,172 @@ function AppMenu() {
                   onClose={handleCloseDropdownClickLevel1}
                   TransitionComponent={Fade}
                 >
-                  {item.submenu.map((item, index) => (
-                    <MenuItem
-                      key={item.id}
-                      className={clsx(classes.menuItem)}
-                      disableGutters
-                      selected={index === selectedIndexLevel2}
-                    >
-                      <Button
-                        className={clsx(classes.menuItemButton)}
-                        size="large"
-                        fullWidth
-                        component="a"
-                        color="inherit"
-                        onClick={(event) =>
-                          handleOpenDropdownClickLevel2(
-                            event,
-                            index,
-                            item.submenu,
-                            item.path
-                          )
-                        }
-                        aria-controls={
-                          item.submenu.length > 0 ? "fade-menu-2" : ""
-                        }
-                        aria-haspopup={
-                          item.submenu.length > 0 ? "true" : "false"
-                        }
-                        endIcon={
-                          item.submenu.length > 0 ? (
-                            index === selectedIndexLevel2 &&
-                            openDropdownLevel2 ? (
-                              <ExpandLess />
-                            ) : (
-                              <ExpandMore />
-                            )
-                          ) : (
-                            <React.Fragment>{""}</React.Fragment>
-                          )
-                        }
+                  <MenuList>
+                    {item.submenu.map((item, index) => (
+                      <MenuItem
+                        key={item.id}
+                        className={clsx(classes.menuItem)}
+                        disableGutters
+                        selected={index === selectedIndexLevel2}
                       >
-                        {item.title}
-                      </Button>
-                      {/* Level2 menu */}
-                      {item.submenu.length > 0 &&
-                        index === selectedIndexLevel2 && (
-                          <React.Fragment>
-                            <Menu
-                              id="fade-menu-2"
-                              anchorEl={anchorElLevel2}
-                              keepMounted
-                              open={openDropdownLevel2}
-                              onClose={handleCloseDropdownClickLevel2}
-                              TransitionComponent={Fade}
-                            >
-                              {item.submenu.map((item, index) => (
-                                <MenuItem
-                                  key={item.id}
-                                  className={clsx(classes.menuItem)}
-                                  disableGutters
-                                  selected={index === selectedIndexLevel3}
-                                >
-                                  <Button
-                                    className={clsx(classes.menuItemButton)}
-                                    size="large"
-                                    fullWidth
-                                    component="a"
-                                    color="inherit"
-                                    onClick={(event) =>
-                                      handleOpenDropdownClickLevel3(
-                                        event,
-                                        index,
-                                        item.submenu,
-                                        item.path
-                                      )
-                                    }
-                                    aria-controls={
-                                      item.submenu.length > 0
-                                        ? "fade-menu-3"
-                                        : ""
-                                    }
-                                    aria-haspopup={
-                                      item.submenu.length > 0 ? "true" : "false"
-                                    }
-                                    endIcon={
-                                      item.submenu.length > 0 ? (
-                                        index === selectedIndexLevel3 &&
-                                        openDropdownLevel3 ? (
-                                          <ExpandLess />
-                                        ) : (
-                                          <ExpandMore />
-                                        )
-                                      ) : (
-                                        <React.Fragment>{""}</React.Fragment>
-                                      )
-                                    }
-                                  >
-                                    {item.title}
-                                  </Button>
-                                  {/* level3 menu */}
-                                  {item.submenu.length > 0 &&
-                                    index === selectedIndexLevel3 && (
-                                      <React.Fragment>
-                                        <Menu
-                                          id="fade-menu-3"
-                                          anchorEl={anchorElLevel3}
-                                          keepMounted
-                                          open={openDropdownLevel3}
-                                          onClose={
-                                            handleCloseDropdownClickLevel3
-                                          }
-                                          TransitionComponent={Fade}
-                                        >
-                                          {item.submenu.map((item, index) => (
-                                            <MenuItem
-                                              key={item.id}
-                                              className={clsx(classes.menuItem)}
-                                              disableGutters
-                                              selected={
-                                                index === selectedIndexLevel4
+                        <Button
+                          className={clsx(classes.menuItemButton)}
+                          size="large"
+                          fullWidth
+                          component="a"
+                          color="inherit"
+                          onClick={(event) =>
+                            handleOpenDropdownClickLevel2(
+                              event,
+                              index,
+                              item.submenu,
+                              item.path
+                            )
+                          }
+                          aria-controls={
+                            item.submenu.length > 0 ? "fade-menu-2" : ""
+                          }
+                          aria-haspopup={
+                            item.submenu.length > 0 ? "true" : "false"
+                          }
+                          endIcon={
+                            item.submenu.length > 0 ? (
+                              index === selectedIndexLevel2 &&
+                              openDropdownLevel2 ? (
+                                <ExpandLess />
+                              ) : (
+                                <ExpandMore />
+                              )
+                            ) : (
+                              <React.Fragment>{""}</React.Fragment>
+                            )
+                          }
+                        >
+                          {item.title}
+                        </Button>
+                        {/* Level2 menu */}
+                        {item.submenu.length > 0 &&
+                          index === selectedIndexLevel2 && (
+                            <React.Fragment>
+                              <Menu
+                                id="fade-menu-2"
+                                anchorEl={anchorElLevel2}
+                                keepMounted
+                                open={openDropdownLevel2}
+                                onClose={handleCloseDropdownClickLevel2}
+                                TransitionComponent={Fade}
+                              >
+                                <MenuList>
+                                  {item.submenu.map((item, index) => (
+                                    <MenuItem
+                                      key={item.id}
+                                      className={clsx(classes.menuItem)}
+                                      disableGutters
+                                      selected={index === selectedIndexLevel3}
+                                    >
+                                      <Button
+                                        className={clsx(classes.menuItemButton)}
+                                        size="large"
+                                        fullWidth
+                                        component="a"
+                                        color="inherit"
+                                        onClick={(event) =>
+                                          handleOpenDropdownClickLevel3(
+                                            event,
+                                            index,
+                                            item.submenu,
+                                            item.path
+                                          )
+                                        }
+                                        aria-controls={
+                                          item.submenu.length > 0
+                                            ? "fade-menu-3"
+                                            : ""
+                                        }
+                                        aria-haspopup={
+                                          item.submenu.length > 0
+                                            ? "true"
+                                            : "false"
+                                        }
+                                        endIcon={
+                                          item.submenu.length > 0 ? (
+                                            index === selectedIndexLevel3 &&
+                                            openDropdownLevel3 ? (
+                                              <ExpandLess />
+                                            ) : (
+                                              <ExpandMore />
+                                            )
+                                          ) : (
+                                            <React.Fragment>
+                                              {""}
+                                            </React.Fragment>
+                                          )
+                                        }
+                                      >
+                                        {item.title}
+                                      </Button>
+                                      {/* level3 menu */}
+                                      {item.submenu.length > 0 &&
+                                        index === selectedIndexLevel3 && (
+                                          <React.Fragment>
+                                            <Menu
+                                              id="fade-menu-3"
+                                              anchorEl={anchorElLevel3}
+                                              keepMounted
+                                              open={openDropdownLevel3}
+                                              onClose={
+                                                handleCloseDropdownClickLevel3
                                               }
+                                              TransitionComponent={Fade}
                                             >
-                                              <Button
-                                                className={clsx(
-                                                  classes.menuItemButton
-                                                )}
-                                                size="large"
-                                                fullWidth
-                                                component="a"
-                                                color="inherit"
-                                                onClick={(event) =>
-                                                  handleOpenDropdownClickLevel4(
-                                                    event,
-                                                    index,
-                                                    item.path
+                                              <MenuList>
+                                                {item.submenu.map(
+                                                  (item, index) => (
+                                                    <MenuItem
+                                                      key={item.id}
+                                                      className={clsx(
+                                                        classes.menuItem
+                                                      )}
+                                                      disableGutters
+                                                      selected={
+                                                        index ===
+                                                        selectedIndexLevel4
+                                                      }
+                                                    >
+                                                      <Button
+                                                        className={clsx(
+                                                          classes.menuItemButton
+                                                        )}
+                                                        size="large"
+                                                        fullWidth
+                                                        component="a"
+                                                        color="inherit"
+                                                        onClick={(event) =>
+                                                          handleOpenDropdownClickLevel4(
+                                                            event,
+                                                            index,
+                                                            item.path
+                                                          )
+                                                        }
+                                                      >
+                                                        {item.title}
+                                                      </Button>
+                                                    </MenuItem>
                                                   )
-                                                }
-                                              >
-                                                {item.title}
-                                              </Button>
-                                            </MenuItem>
-                                          ))}
-                                        </Menu>
-                                      </React.Fragment>
-                                    )}
-                                </MenuItem>
-                              ))}
-                            </Menu>
-                          </React.Fragment>
-                        )}
-                    </MenuItem>
-                  ))}
+                                                )}
+                                              </MenuList>
+                                            </Menu>
+                                          </React.Fragment>
+                                        )}
+                                    </MenuItem>
+                                  ))}
+                                </MenuList>
+                              </Menu>
+                            </React.Fragment>
+                          )}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
                 </Menu>
               </React.Fragment>
             )}
