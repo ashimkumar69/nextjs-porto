@@ -70,7 +70,7 @@ const menuLists = [
   },
   {
     id: 9,
-    title: "Test Pages",
+    title: "Mors",
     path: "",
     submenu: [
       {

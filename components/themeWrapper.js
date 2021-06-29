@@ -7,16 +7,15 @@ import { useSelector } from "react-redux";
 // material
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core/styles";
+import { responsiveFontSizes } from "@material-ui/core/styles";
 
 // import
 import { themeLight, themeDark } from "../theme/theme";
 
-
-
-
 function ThemeWrapper(props) {
   const isThemeLight = useSelector((state) => state.theme.themeLight);
-  const theme = isThemeLight ? themeLight : themeDark;
+  let theme = isThemeLight ? themeLight : themeDark;
+  theme = responsiveFontSizes(theme);
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

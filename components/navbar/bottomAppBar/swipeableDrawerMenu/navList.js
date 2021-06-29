@@ -72,47 +72,53 @@ const listItems = [
   },
   {
     id: 9,
-    title: "Test Pages",
+    title: "Mors",
     path: "",
     submenu: [
-      { id: 1, title: "Pages 1", path: "", submenu: [] },
       {
-        id: 2,
-        title: "Pages 2",
+        id: 1,
+        title: "Level 1",
         path: "",
         submenu: [
           {
             id: 1,
-            title: "Auth",
+            title: "Level 2",
+            path: "",
+            submenu: [],
+          },
+
+          { id: 2, title: "Level 2", path: "", submenu: [] },
+          {
+            id: 3,
+            title: "Level 2",
             path: "",
             submenu: [
               {
                 id: 1,
-                title: "Login",
+                title: " Level 3",
                 path: "",
                 submenu: [],
               },
-
-              { id: 2, title: "Register", path: "", submenu: [] },
-              { id: 3, title: "Reset Password", path: "", submenu: [] },
+              { id: 2, title: " Level 3", path: "", submenu: [] },
+              { id: 3, title: "Level 3", path: "", submenu: [] },
             ],
-          },
-          {
-            id: 2,
-            title: "Error Page",
-            path: "",
-            submenu: [
-              { id: 1, title: "404 Page", path: "", submenu: [] },
-              { id: 2, title: "500 Page", path: "", submenu: [] },
-            ],
-          },
-          {
-            id: 3,
-            title: "Settings",
-            path: "",
-            submenu: [],
           },
         ],
+      },
+      {
+        id: 2,
+        title: "Level 1",
+        path: "",
+        submenu: [
+          { id: 1, title: "Level 2", path: "", submenu: [] },
+          { id: 2, title: "Level 2", path: "", submenu: [] },
+        ],
+      },
+      {
+        id: 3,
+        title: "Level 1",
+        path: "",
+        submenu: [],
       },
     ],
   },
