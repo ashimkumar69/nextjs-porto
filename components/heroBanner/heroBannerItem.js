@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     fontWeight: theme.typography.fontWeightBold,
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: theme.typography.body2.fontSize,
       textAlign: "center",
       display: "block",
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontWeight: theme.typography.fontWeightBold,
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       fontSize: theme.typography.h4.fontSize,
       textAlign: "center",
       marginBottom: theme.spacing(1),
@@ -62,8 +62,18 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     padding: theme.spacing(1.5, 5),
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       padding: theme.spacing(0.6, 3),
+    },
+  },
+  buttonBox: {
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "center",
+    },
+  },
+  grid: {
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "center",
     },
   },
 }));
@@ -77,6 +87,7 @@ function HeroBannerItem() {
   //material style
   const classes = useStyles();
 
+  // banner image size in different screen
   const downSm = useMediaQuery("(max-width:599.95px)");
   const smUp = useMediaQuery("(min-width:600px)");
   const lgUp = useMediaQuery("(min-width:1280px)");
@@ -96,7 +107,7 @@ function HeroBannerItem() {
       height: 400,
     };
   }
-  console.log(imageSize);
+
   return (
     <Box className={clsx(classes.slider)}>
       <Image
@@ -107,41 +118,39 @@ function HeroBannerItem() {
         layout="responsive"
       />
       <Box className={clsx(classes.overlay)} display="flex" alignItems="center">
-        <Box flexGrow={1}>
-          <Container maxWidth="lg">
-            <Grid container justify="center">
-              <Grid item xs={10} sm={8} lg={6}>
-                <Typography
-                  variant="subtitle1"
-                  component="span"
-                  className={clsx(classes.sub_heading, classes.gradient_color)}
-                >
-                  Web digital designer
-                </Typography>
+        <Container maxWidth="lg">
+          <Grid container className={clsx(classes.grid)}>
+            <Grid item xs={12} sm={6} md={7} lg={6}>
+              <Typography
+                variant="subtitle1"
+                component="span"
+                className={clsx(classes.sub_heading, classes.gradient_color)}
+              >
+                Web digital designer
+              </Typography>
 
-                <Typography
-                  variant="h2"
-                  component="h2"
-                  className={clsx(classes.heading, classes.gradient_color)}
-                >
-                  Hello, I’m Designer. Welcome to my World.
-                </Typography>
-                <Box textAlign="center">
-                  <Link href="/login">
-                    <Button
-                      component="a"
-                      variant="contained"
-                      color="primary"
-                      className={clsx(classes.button)}
-                    >
-                      Hire Me
-                    </Button>
-                  </Link>
-                </Box>
-              </Grid>
+              <Typography
+                variant="h2"
+                component="h2"
+                className={clsx(classes.heading, classes.gradient_color)}
+              >
+                Hello, I’m Designer. Welcome to my World.
+              </Typography>
+              <Box className={classes.buttonBox}>
+                <Link href="/login">
+                  <Button
+                    component="a"
+                    variant="contained"
+                    color="primary"
+                    className={clsx(classes.button)}
+                  >
+                    Hire Me
+                  </Button>
+                </Link>
+              </Box>
             </Grid>
-          </Container>
-        </Box>
+          </Grid>
+        </Container>
       </Box>
     </Box>
   );

@@ -17,21 +17,11 @@ const useStyles = makeStyles((theme) => ({
   slick_slider: {
     "& > .slick-prev": {
       left: theme.spacing(3),
-      zIndex: 99,
-      "&:hover , &:focus": {
-        "&::before": {
-          opacity: 1,
-        },
-      },
-
-      "&::before": {
-        color: theme.palette.primary.main,
-        fontSize: theme.spacing(4),
-        opacity: 0.54,
-      },
     },
     "& > .slick-next": {
       right: theme.spacing(3),
+    },
+    "& > .slick-prev , .slick-next": {
       zIndex: 99,
       "&:hover , &:focus": {
         "&::before": {
@@ -45,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         opacity: 0.54,
       },
     },
+
     "& > .slick-dots": {
       bottom: theme.spacing(1.25),
       [theme.breakpoints.down("sm")]: {
@@ -97,13 +88,19 @@ function HeroBanner() {
     cssEase: "linear",
     responsive: [
       {
-        breakpoint: 959.95,
+        breakpoint: 1280,
         settings: {
           arrows: false,
         },
       },
       {
-        breakpoint: 599.95,
+        breakpoint: 960,
+        settings: {
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 600,
         settings: {
           arrows: false,
         },
@@ -113,13 +110,11 @@ function HeroBanner() {
 
   return (
     <Box component="section">
-      <Container maxWidth="xl" disableGutters>
-        <Slider {...settings} className={clsx(classes.slick_slider)}>
-          <HeroBannerItem />
-          <HeroBannerItem />
-          <HeroBannerItem />
-        </Slider>
-      </Container>
+      <Slider {...settings} className={clsx(classes.slick_slider)}>
+        <HeroBannerItem />
+        <HeroBannerItem />
+        <HeroBannerItem />
+      </Slider>
     </Box>
   );
 }
