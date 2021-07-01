@@ -11,10 +11,7 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 
-// import
-import Rgba from "color-to-rgba";
-
-const listItems = [
+const navList = [
   { id: 1, title: "Home", path: "#home", submenu: [] },
   { id: 2, title: "About", path: "#about", submenu: [] },
   { id: 3, title: "Services", path: "#services", submenu: [] },
@@ -127,7 +124,7 @@ const listItems = [
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: "350px",
+    maxWidth: theme.spacing(44),
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -243,7 +240,7 @@ function NavList(props) {
   return (
     <List component="nav" className={classes.root}>
       {/* level 1 */}
-      {listItems.map((item, index) => (
+      {navList.map((item, index) => (
         <React.Fragment key={item.id}>
           <ListItem
             button

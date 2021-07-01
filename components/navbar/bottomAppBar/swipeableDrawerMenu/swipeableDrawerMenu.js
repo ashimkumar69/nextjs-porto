@@ -11,11 +11,11 @@ import Box from "@material-ui/core/Box";
 import NavList from "./navList";
 import clsx from "clsx";
 
-const useStyles = makeStyles({
-  listWrapper: {
-    width: 250,
+const useStyles = makeStyles((theme) => ({
+  navListWrapper: {
+    width: theme.spacing(32),
   },
-});
+}));
 
 function SwipeableDrawerMenu() {
   const classes = useStyles();
@@ -41,7 +41,7 @@ function SwipeableDrawerMenu() {
           onClose={() => toggleDrawer(false)}
           onOpen={() => {}}
         >
-          <Box className={clsx(classes.listWrapper)}>
+          <Box className={clsx(classes.navListWrapper)}>
             <NavList toggledrawer={toggleDrawer} />
           </Box>
         </SwipeableDrawer>

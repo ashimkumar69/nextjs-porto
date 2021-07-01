@@ -13,6 +13,7 @@ import {
   themeDarkAction,
   themeLightAction,
 } from "../../../reduxStore/actions/index";
+
 // material
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -39,6 +40,7 @@ const LogoButton = withStyles(() => ({
     padding: 0,
   },
 }))(Button);
+
 const TopAppBarToolbar = withStyles(() => ({
   root: {
     justifyContent: "center",
@@ -61,13 +63,15 @@ export default function BottomAppBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
 
-  // load component cliend site
+  // load component client site
   const loaded = useLoaded();
+
   // theme color
   const isThemeLight = useSelector((state) => state.theme.themeLight);
   const changeThemeHandler = () => {
     isThemeLight ? dispatch(themeDarkAction()) : dispatch(themeLightAction());
   };
+
   return (
     <React.Fragment>
       {/* top appbar */}

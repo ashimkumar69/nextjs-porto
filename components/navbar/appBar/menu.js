@@ -17,7 +17,7 @@ import MenuList from "@material-ui/core/MenuList";
 import Scrollspy from "react-scrollspy";
 import clsx from "clsx";
 
-const menuLists = [
+const menuList = [
   { id: 1, title: "Home", path: "#home", submenu: [] },
   { id: 2, title: "About", path: "#about", submenu: [] },
   { id: 3, title: "Services", path: "#services", submenu: [] },
@@ -123,30 +123,31 @@ const menuLists = [
 ];
 
 const useStyles = makeStyles((theme) => ({
-  navLinkButton: {
-    padding: "20px 15px",
+  menuList: {
+    display: "flex",
+    listStyle: "none",
+    margin: 0,
+
+    "& > .is-current": {
+      "& > $menuLinkButton": {
+        borderBottom: `2px solid ${theme.palette.common.white}`,
+      },
+    },
+  },
+  menuLinkButton: {
+    padding: theme.spacing(2.5, 2),
     borderRadius: 0,
     borderBottom: "2px solid transparent",
     "&:hover": {
       borderBottom: `2px solid ${theme.palette.common.white}`,
     },
   },
-  navList: {
-    display: "flex",
-    listStyle: "none",
-    margin: 0,
 
-    "& > .is-current": {
-      "& > .MuiButton-root": {
-        borderBottom: `2px solid ${theme.palette.common.white}`,
-      },
-    },
-  },
-  menuItem: {
+  dropdownMenuItem: {
     padding: 0,
-    width: "150px",
+    width: theme.spacing(19),
   },
-  menuItemButton: {
+  dropdownMenuItemButton: {
     borderRadius: "unset",
   },
 }));
@@ -242,13 +243,13 @@ function AppMenu() {
         ]}
         currentClassName="is-current"
         componentTag="ul"
-        className={classes.navList}
+        className={classes.menuList}
         offset={-10}
       >
-        {menuLists.map((item, index) => (
+        {menuList.map((item, index) => (
           <Box component="li" key={item.id}>
             <Button
-              className={clsx(classes.navLinkButton)}
+              className={clsx(classes.menuLinkButton)}
               component="a"
               color="inherit"
               onClick={(event) =>
@@ -291,12 +292,12 @@ function AppMenu() {
                     {item.submenu.map((item, index) => (
                       <MenuItem
                         key={item.id}
-                        className={clsx(classes.menuItem)}
+                        className={clsx(classes.dropdownMenuItem)}
                         disableGutters
                         selected={index === selectedIndexLevel2}
                       >
                         <Button
-                          className={clsx(classes.menuItemButton)}
+                          className={clsx(classes.dropdownMenuItemButton)}
                           size="large"
                           fullWidth
                           component="a"
@@ -346,12 +347,14 @@ function AppMenu() {
                                   {item.submenu.map((item, index) => (
                                     <MenuItem
                                       key={item.id}
-                                      className={clsx(classes.menuItem)}
+                                      className={clsx(classes.dropdownMenuItem)}
                                       disableGutters
                                       selected={index === selectedIndexLevel3}
                                     >
                                       <Button
-                                        className={clsx(classes.menuItemButton)}
+                                        className={clsx(
+                                          classes.dropdownMenuItemButton
+                                        )}
                                         size="large"
                                         fullWidth
                                         component="a"
@@ -411,7 +414,7 @@ function AppMenu() {
                                                     <MenuItem
                                                       key={item.id}
                                                       className={clsx(
-                                                        classes.menuItem
+                                                        classes.dropdownMenuItem
                                                       )}
                                                       disableGutters
                                                       selected={
@@ -421,7 +424,7 @@ function AppMenu() {
                                                     >
                                                       <Button
                                                         className={clsx(
-                                                          classes.menuItemButton
+                                                          classes.dropdownMenuItemButton
                                                         )}
                                                         size="large"
                                                         fullWidth

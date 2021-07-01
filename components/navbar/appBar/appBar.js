@@ -16,7 +16,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 // material
-import { makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -43,14 +43,14 @@ const LogoButton = withStyles(() => ({
   },
 }))(Button);
 
-function Nav(props) {
+function Nav() {
   // redux
   const dispatch = useDispatch();
 
   // nextjs
   const router = useRouter();
 
-  // load component cliend site
+  // load component client site
   const loaded = useLoaded();
 
   // theme color
@@ -82,9 +82,11 @@ function Nav(props) {
               </Grid>
               <Grid item>
                 <Box>
-                  <Button color="inherit" onClick={() => router.push("/login")}>
-                    Login
-                  </Button>
+                  <Link href="/login">
+                    <Button component="a" color="inherit">
+                      Login
+                    </Button>
+                  </Link>
 
                   <IconButton
                     aria-label="change theme color"
