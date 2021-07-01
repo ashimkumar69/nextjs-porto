@@ -12,15 +12,18 @@ import NewsItem from "./newsItem";
 
 function News() {
   return (
-    <Box component="section" py={10}  id="news">
+    <Box component="section" py={10} id="news">
       <Container maxWidth="lg">
-        <Grid container spacing={4} justify="center" alignItems="center">
+        <Grid container justify="center" alignItems="center">
           <Grid item xs={8}>
             <SectionsHeader
-              section_align="center"
-              subtitle={<Fragment>Latest News</Fragment>}
-              title={<Fragment>Latest News</Fragment>}
-              body={
+              marginbottom="10"
+              subheadingtextalign="center"
+              subheading={<Fragment>Latest News</Fragment>}
+              headingtextalign="center"
+              heading={<Fragment> News</Fragment>}
+              paragraphtextalign="center"
+              paragraph={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -29,7 +32,6 @@ function News() {
                   Velit, necessitatibus.
                 </Fragment>
               }
-              body_text_align="center"
             />
           </Grid>
         </Grid>

@@ -65,15 +65,18 @@ function Contact() {
     // }
   };
   return (
-    <Box component="section" py={10}  id="contact">
+    <Box component="section" py={10} id="contact">
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={7}>
             <SectionsHeader
-              section_align="left"
-              subtitle={<Fragment>Let's Say Hi</Fragment>}
-              title={<Fragment>Hire Me.</Fragment>}
-              body={
+              marginbottom="4"
+              subheadingtextalign="left"
+              subheading={<Fragment>Let's Say Hi</Fragment>}
+              headingtextalign="left"
+              heading={<Fragment>Hire Me.</Fragment>}
+              paragraphtextalign="left"
+              paragraph={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -82,8 +85,8 @@ function Contact() {
                   Velit, necessitatibus.
                 </Fragment>
               }
-              body_text_align="left"
             />
+
             <form noValidate autoComplete="off" onSubmit={formSubmitHandler}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>

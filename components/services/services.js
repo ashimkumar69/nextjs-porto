@@ -14,13 +14,16 @@ function Services() {
   return (
     <Box component="section" py={10} id="services">
       <Container maxWidth="lg">
-        <Grid container spacing={4} justify="center" alignItems="center">
-          <Grid item xs={8}>
+        <Grid container justify="center" alignItems="center">
+          <Grid item xs={12} lg={8}>
             <SectionsHeader
-              section_align="center"
-              subtitle={<Fragment>What I can do for you</Fragment>}
-              title={<Fragment>My Awesome Service</Fragment>}
-              body={
+              marginbottom="10"
+              subheadingtextalign="center"
+              subheading={<Fragment>What I can do for you</Fragment>}
+              headingtextalign="center"
+              heading={<Fragment>My Awesome Service</Fragment>}
+              paragraphtextalign="center"
+              paragraph={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -29,13 +32,12 @@ function Services() {
                   Velit, necessitatibus.
                 </Fragment>
               }
-              body_text_align="center"
             />
           </Grid>
         </Grid>
 
         <Grid container spacing={4}>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Business Strategy</Fragment>}
               body={
@@ -46,7 +48,7 @@ function Services() {
               }
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Website Development</Fragment>}
               body={
@@ -58,7 +60,7 @@ function Services() {
               }
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Marketing & Reporting</Fragment>}
               body={
@@ -70,7 +72,7 @@ function Services() {
               }
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Mobile App Development</Fragment>}
               body={
@@ -82,7 +84,7 @@ function Services() {
               }
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Graphics Designing</Fragment>}
               body={
@@ -94,7 +96,7 @@ function Services() {
               }
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
               title={<Fragment>Web designing</Fragment>}
               body={

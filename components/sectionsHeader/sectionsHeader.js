@@ -5,9 +5,26 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+// import
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
-  gradient_color: {
+  textAlign: (props) => ({
+    textAlign: props.subheadingtextalign,
+  }),
+  subHeading: {
+    textTransform: "uppercase",
+    fontWeight: theme.typography.fontWeightBold,
+    marginBottom: theme.spacing(2),
+  },
+  heading: {
+    fontWeight: theme.typography.fontWeightBold,
+    marginBottom: theme.spacing(2),
+  },
+  paragraph: {
+    marginBottom: 0,
+  },
+  gradientColor: {
     background:
       "linear-gradient(45deg,#fd4766 20.69%,#7644ff 50.19%,#1c99fe 79.69%)",
     backgroundClip: "text",
@@ -18,41 +35,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SectionsHeader(props) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   return (
-    <Box mb={6}>
-      <Typography component="div" align={props.section_align}>
-        <Box
-          fontSize="subtitle1.fontSize"
-          fontWeight="fontWeightBold"
-          letterSpacing={0.5}
-          lineHeight={1}
+    <Box mb={+props.marginbottom}>
+      <Box className={clsx(classes.textAlign)}>
+        <Typography
+          variant="subtitle1"
           component="span"
-          className={`${classes.gradient_color}`}
+          className={clsx(classes.subHeading, classes.gradientColor)}
         >
-          {props.subtitle}
-        </Box>
-        <Box
-          my={2}
-          fontSize="h2.fontSize"
-          fontWeight="fontWeightBold"
-          lineHeight={1}
-          component="h2"
-          color="text.primary"
-        >
-          {props.title}
-        </Box>
-        <Box
-          my={0}
-          textAlign={props.body_text_align}
-          fontSize="body1.fontSize"
-          fontWeight="fontWeightRegular"
-          lineHeight={1.5}
-          component="p"
-          color="text.secondary"
-        >
-          {props.body}
-        </Box>
+          {props.subheading}
+        </Typography>
+      </Box>
+
+      <Typography
+        variant="h3"
+        component="h2"
+        align={props.headingtextalign}
+        className={clsx(classes.heading)}
+      >
+        {props.heading}
+      </Typography>
+
+      <Typography
+        variant="body1"
+        component="p"
+        align={props.paragraphtextalign}
+        className={clsx(classes.paragraph)}
+      >
+        {props.paragraph}
       </Typography>
     </Box>
   );

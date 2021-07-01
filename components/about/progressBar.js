@@ -1,9 +1,14 @@
+// react
 import React from "react";
-import PropTypes from "prop-types";
+
+// material
 import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+
+// import
+import PropTypes from "prop-types";
 
 function LinearProgressWithLabel(props) {
   return (

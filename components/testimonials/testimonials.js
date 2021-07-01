@@ -85,13 +85,16 @@ function Testimonials() {
   return (
     <Box component="section" py={10} id="testimonials">
       <Container maxWidth="lg">
-        <Grid container spacing={4} justify="center" alignItems="center">
+        <Grid container justify="center" alignItems="center">
           <Grid item xs={8}>
             <SectionsHeader
-              section_align="center"
-              subtitle={<Fragment>Top Testimonials</Fragment>}
-              title={<Fragment>Testimonials</Fragment>}
-              body={
+              marginbottom="10"
+              subheadingtextalign="center"
+              subheading={<Fragment>Top Testimonials</Fragment>}
+              headingtextalign="center"
+              heading={<Fragment>Testimonials</Fragment>}
+              paragraphtextalign="center"
+              paragraph={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -100,7 +103,6 @@ function Testimonials() {
                   Velit, necessitatibus.
                 </Fragment>
               }
-              body_text_align="center"
             />
           </Grid>
         </Grid>

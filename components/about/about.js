@@ -16,7 +16,7 @@ function About() {
     <Box component="section" py={10} id="about">
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          <Grid item xs={5}>
+          <Grid item xs={12} lg={5}>
             <Box borderRadius={4}>
               <Box borderRadius={4} clone>
                 <Image
@@ -29,24 +29,25 @@ function About() {
               </Box>
             </Box>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={12} lg={7}>
             <SectionsHeader
-              section_align="left"
-              subtitle={<Fragment> My About Details</Fragment>}
-              title={<Fragment>About Me</Fragment>}
-              body={
+              marginbottom="4"
+              subheadingtextalign="left"
+              subheading={<Fragment>My About Details</Fragment>}
+              headingtextalign="left"
+              heading={<Fragment>About Me</Fragment>}
+              paragraphtextalign="left"
+              paragraph={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
                   corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus autem eligendi nam sunt molestias totam harum
-                  temporibus nobis delectus impedit labore ex corrupti fugit
-                  nisi. Cumque hic quibusdam molestias sed, voluptas vitae est!
+                  necessitatibus quibusdam molestias sed, voluptas vitae est!
                   Velit, necessitatibus.
                 </Fragment>
               }
-              body_text_align="justify"
             />
+
             <Box>
               <Tab />
             </Box>
