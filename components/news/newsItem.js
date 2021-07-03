@@ -83,7 +83,7 @@ function News(props) {
               className={classes.chip}
               color="primary"
               label={props.date}
-              icon={<CalendarTodayIcon />}
+              icon={<CalendarTodayIcon fontSize="small" />}
             />
           </Box>
         </Box>

@@ -62,7 +62,7 @@ function Footer() {
           <Grid item xs={12}>
             <Box display="flex" justifyContent="center">
               <Image
-                src="/images/logo/logo-01.png"
+                src="/images/logo/footer-logo-01.png"
                 alt="logo"
                 width={160}
                 height={30}
@@ -80,7 +80,7 @@ function Footer() {
                   Copyright &copy; {year}{" "}
                   <Link href="/login">
                     <MuiLink component="button" variant="inherit">
-                      My
+                      Porto
                     </MuiLink>
                   </Link>{" "}
                   Theme. All Rights Reserve.

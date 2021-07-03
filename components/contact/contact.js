@@ -14,6 +14,7 @@ import Button from "@material-ui/core/Button";
 
 // import ;
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
+import { Typography } from "@material-ui/core";
 
 const HireMeButton = withStyles(() => ({
   root: {
@@ -33,6 +34,12 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       order: 0,
     },
+  },
+  inline: {
+    display: "block",
+  },
+  fontWeight: {
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 
@@ -94,11 +101,18 @@ function Contact() {
               bodytextalign="left"
               body={
                 <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
+                  <Typography component="span" className={classes.inline}>
+                    Call Us:{" "}
+                    <Typography component="span" className={classes.fontWeight}>
+                      +555 (0)99 6622 8787
+                    </Typography>
+                  </Typography>
+                  <Typography component="span" className={classes.inline}>
+                    Email Address:{" "}
+                    <Typography component="span" className={classes.fontWeight}>
+                      example@domain.com
+                    </Typography>
+                  </Typography>
                 </Fragment>
               }
             />
