@@ -6,15 +6,13 @@ import Slider from "react-slick";
 
 // material
 import Box from "@material-ui/core/Box";
-import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
 // import
 import HeroBannerItem from "./heroBannerItem.js";
-import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
-  slick_slider: {
+  slickSlider: {
     "& > .slick-prev": {
       left: theme.spacing(3),
     },
@@ -110,7 +108,7 @@ function HeroBanner() {
 
   return (
     <Box component="section">
-      <Slider {...settings} className={clsx(classes.slick_slider)}>
+      <Slider {...settings} className={classes.slickSlider}>
         <HeroBannerItem />
         <HeroBannerItem />
         <HeroBannerItem />

@@ -28,7 +28,6 @@ import AccountMenu from "./accountMenu";
 import SearchMenu from "./searchMenu";
 import SwipeableDrawerMenu from "./swipeableDrawerMenu/swipeableDrawerMenu";
 import { useLoaded } from "../../../hooks/loaded";
-import clsx from "clsx";
 
 const LogoButton = withStyles(() => ({
   root: {
@@ -80,7 +79,7 @@ export default function BottomAppBar() {
         position="static"
         color="primary"
         id="home"
-        className={clsx("back-to-top-anchor")}
+        className="back-to-top-anchor"
       >
         <TopAppBarToolbar>
           <Link href="/">

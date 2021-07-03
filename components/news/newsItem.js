@@ -3,11 +3,9 @@ import React from "react";
 
 // next
 import Image from "next/image";
-import { useRouter } from "next/router";
 import Link from "next/link";
 // meterial
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,62 +18,71 @@ import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
 import CalendarTodayIcon from "@material-ui/icons/CalendarToday";
 
-const StyledCardHeader = withStyles({
+const StyledCardHeader = withStyles((theme) => ({
   root: {
-    padding: "16px 16px 0 16px",
+    padding: theme.spacing(2, 2, 1, 2),
   },
-})(CardHeader);
+}))(CardHeader);
 
 const useStyles = makeStyles((theme) => ({
   card: {
+    transition: "all 500ms ease-in-out",
     cursor: "grab",
     "&:hover": {
-      "& .chip": {
+      transform: "translateY(-10px)",
+      "& $chip": {
         transform: "translateX(0)",
         transition: "all 500ms ease-in-out",
         opacity: 1,
       },
+      "& $image": {
+        transform: "scale(1.1)",
+      },
     },
-    "& .chip": {
-      opacity: 0,
-      transform: "translateX(-120px)",
-      transition: "all 500ms ease-in-out",
-    },
+  },
+  chip: {
+    opacity: 0,
+    transform: "translateX(-120px)",
+    transition: "all 500ms ease-in-out",
+  },
+  imageBox: {
+    position: "relative",
+  },
+  overlay: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
   },
   image: {
-    position: "relative",
-    "& .overlay": {
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-    },
+    transition: "all 500ms ease-in-out",
   },
-
-  //
+  title: {
+    marginBottom: theme.spacing(1),
+  },
 }));
 
-function News() {
-  const router = useRouter();
+function News(props) {
   const classes = useStyles();
 
   return (
     <Card elevation={0} className={classes.card}>
-      <Box className={classes.image}>
+      <Box className={classes.imageBox}>
         <Image
-          src="/images/news/1.jpg"
+          src={props.image}
           width={300}
           height={200}
           layout="responsive"
           alt="avatar"
+          className={classes.image}
         />
-        <Box className="overlay" display="flex" alignItems="flex-end">
+        <Box className={classes.overlay} display="flex" alignItems="flex-end">
           <Box flexGrow={1} p={1}>
             <Chip
-              className="chip"
+              className={classes.chip}
               color="primary"
-              label="2 oct 2021"
+              label={props.date}
               icon={<CalendarTodayIcon />}
             />
           </Box>
@@ -85,37 +92,31 @@ function News() {
         avatar={
           <Avatar aria-label="avatar">
             <Image
-              src="/images/testimonials/1.jpg"
+              src={props.headeravatar}
               width={50}
               height={50}
               alt="avatar"
             />
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="CEO Math Private Ltd."
+        title={props.headertitle}
+        subheader={props.headersubtitle}
       />
       <CardContent>
-        <Typography component="div">
-          <Box
-            mb={1}
-            mt={0}
-            fontSize="subtitle1.fontSize"
-            color="text.primary"
-            fontWeight="fontWeightMedium"
-            component="h2"
-          >
-            This impressive paella is a perfect party dish
-          </Box>
+        <Typography
+          variant="h5"
+          component="h5"
+          color="textPrimary"
+          className={classes.title}
+        >
+          {props.title}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
+        <Typography variant="body1" color="textSecondary" component="p">
+          {props.body}
         </Typography>
       </CardContent>
       <CardActions>
-        <Link href="/login">
+        <Link href={props.path}>
           <Button
             component="a"
             variant="outlined"

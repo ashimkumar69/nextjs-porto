@@ -7,40 +7,42 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import BusinessIcon from "@material-ui/icons/Business";
 
 // import
 import Rgba from "color-to-rgba";
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
-    backgroundColor: theme.palette.background.default,
-  },
   card: {
     transition: "all 300ms ease-in-out",
     cursor: "grab",
-    "& .textPrimary": {
-      textTransform: "capitalize",
-    },
     "&:hover": {
       transform: "scale(1.04)",
       backgroundColor: theme.palette.primary.main,
-      "& .iconBackground": {
+      "& $iconBox": {
         backgroundColor: Rgba(theme.palette.common.black, 0.1),
       },
       "& .icon": {
         color: theme.palette.common.white,
       },
-      "& .textPrimary": {
-        color: Rgba(theme.palette.common.white, 0.87),
+      "& $title": {
+        color: theme.palette.type === "light" && theme.palette.common.white,
       },
-      "& .textSecondary": {
+      "& $body": {
         color:
-          theme.palette.type === "dark"
-            ? Rgba(theme.palette.common.white, 0.7)
-            : Rgba(theme.palette.common.white, 0.54),
+          theme.palette.type === "light" &&
+          Rgba(theme.palette.common.white, 0.7),
       },
     },
+  },
+  iconBox: {
+    backgroundColor: theme.palette.background.default,
+  },
+  title: {
+    marginBottom: theme.spacing(2),
+    textTransform: "capitalize",
+  },
+  body: {
+    //need this
   },
 }));
 
@@ -54,42 +56,30 @@ export default function ServicesCard(props) {
           borderRadius="50%"
           p={4}
           component="span"
-          className={`${classes.paper} iconBackground`}
+          className={classes.iconBox}
         >
-          <BusinessIcon className="icon" />
+          {props.icon}
         </Box>
       </Box>
 
       <CardContent>
-        <Typography component="div">
-          <Box
-            my={1}
-            textAlign="center"
-            fontSize="h5.fontSize"
-            fontWeight="fontWeightMedium"
-            lineHeight={1}
-            component="h2"
-            color="text.primary"
-            height={24}
-            className="textPrimary"
-          >
-            {props.title}
-          </Box>
+        <Typography
+          variant="h5"
+          component="h5"
+          className={classes.title}
+          align="center"
+          color="textPrimary"
+        >
+          {props.title}
         </Typography>
-        <Typography component="div">
-          <Box
-            my={0}
-            textAlign="center"
-            fontSize="body2.fontSize"
-            fontWeight="fontWeightRegular"
-            lineHeight={1.5}
-            component="p"
-            color="text.secondary"
-            height={84}
-            className="textSecondary"
-          >
-            {props.body}
-          </Box>
+        <Typography
+          variant="body1"
+          component="p"
+          className={classes.body}
+          align="center"
+          color="textSecondary"
+        >
+          {props.body}
         </Typography>
       </CardContent>
     </Card>

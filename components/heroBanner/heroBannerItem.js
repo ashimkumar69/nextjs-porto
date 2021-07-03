@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: Rgba(theme.palette.common.black, 0.1),
   },
 
-  gradient_color: {
+  gradientColor: {
     background:
       "linear-gradient(45deg,#fd4766 20.69%,#7644ff 50.19%,#1c99fe 79.69%)",
     backgroundClip: "text",
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
   },
 
-  sub_heading: {
+  subHeading: {
     textTransform: "uppercase",
     fontWeight: theme.typography.fontWeightBold,
     marginBottom: theme.spacing(3),
@@ -109,7 +109,7 @@ function HeroBannerItem() {
   }
 
   return (
-    <Box className={clsx(classes.slider)}>
+    <Box className={classes.slider}>
       <Image
         src="/images/heroBanner/1.jpg"
         alt="hero banner image"
@@ -117,22 +117,22 @@ function HeroBannerItem() {
         height={imageSize.height}
         layout="responsive"
       />
-      <Box className={clsx(classes.overlay)} display="flex" alignItems="center">
+      <Box className={classes.overlay} display="flex" alignItems="center">
         <Container maxWidth="lg">
-          <Grid container className={clsx(classes.grid)}>
+          <Grid container className={classes.grid}>
             <Grid item xs={12} sm={6} md={7} lg={6}>
               <Typography
                 variant="subtitle1"
                 component="span"
-                className={clsx(classes.sub_heading, classes.gradient_color)}
+                className={clsx(classes.subHeading, classes.gradientColor)}
               >
-                Web digital designer
+                Web World pixel designer
               </Typography>
 
               <Typography
                 variant="h2"
                 component="h2"
-                className={clsx(classes.heading, classes.gradient_color)}
+                className={clsx(classes.heading, classes.gradientColor)}
               >
                 Hello, I’m Designer. Welcome to my World.
               </Typography>
@@ -142,7 +142,7 @@ function HeroBannerItem() {
                     component="a"
                     variant="contained"
                     color="primary"
-                    className={clsx(classes.button)}
+                    className={classes.button}
                   >
                     Hire Me
                   </Button>

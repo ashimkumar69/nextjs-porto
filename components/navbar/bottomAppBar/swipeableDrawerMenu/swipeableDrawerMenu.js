@@ -9,7 +9,6 @@ import Box from "@material-ui/core/Box";
 
 // import
 import NavList from "./navList";
-import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   navListWrapper: {
@@ -41,7 +40,7 @@ function SwipeableDrawerMenu() {
           onClose={() => toggleDrawer(false)}
           onOpen={() => {}}
         >
-          <Box className={clsx(classes.navListWrapper)}>
+          <Box className={classes.navListWrapper}>
             <NavList toggledrawer={toggleDrawer} />
           </Box>
         </SwipeableDrawer>

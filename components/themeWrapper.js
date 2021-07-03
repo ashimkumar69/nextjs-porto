@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 
 // material
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/core/styles";
-import { responsiveFontSizes } from "@material-ui/core/styles";
+import { ThemeProvider, responsiveFontSizes } from "@material-ui/core/styles";
 
 // import
 import { themeLight, themeDark } from "../theme/theme";

@@ -15,7 +15,6 @@ import MenuList from "@material-ui/core/MenuList";
 
 // import
 import Scrollspy from "react-scrollspy";
-import clsx from "clsx";
 
 const menuList = [
   { id: 1, title: "Home", path: "#home", submenu: [] },
@@ -249,7 +248,7 @@ function AppMenu() {
         {menuList.map((item, index) => (
           <Box component="li" key={item.id}>
             <Button
-              className={clsx(classes.menuLinkButton)}
+              className={classes.menuLinkButton}
               component="a"
               color="inherit"
               onClick={(event) =>
@@ -292,12 +291,12 @@ function AppMenu() {
                     {item.submenu.map((item, index) => (
                       <MenuItem
                         key={item.id}
-                        className={clsx(classes.dropdownMenuItem)}
+                        className={classes.dropdownMenuItem}
                         disableGutters
                         selected={index === selectedIndexLevel2}
                       >
                         <Button
-                          className={clsx(classes.dropdownMenuItemButton)}
+                          className={classes.dropdownMenuItemButton}
                           size="large"
                           fullWidth
                           component="a"
@@ -347,14 +346,14 @@ function AppMenu() {
                                   {item.submenu.map((item, index) => (
                                     <MenuItem
                                       key={item.id}
-                                      className={clsx(classes.dropdownMenuItem)}
+                                      className={classes.dropdownMenuItem}
                                       disableGutters
                                       selected={index === selectedIndexLevel3}
                                     >
                                       <Button
-                                        className={clsx(
+                                        className={
                                           classes.dropdownMenuItemButton
-                                        )}
+                                        }
                                         size="large"
                                         fullWidth
                                         component="a"
@@ -413,9 +412,9 @@ function AppMenu() {
                                                   (item, index) => (
                                                     <MenuItem
                                                       key={item.id}
-                                                      className={clsx(
+                                                      className={
                                                         classes.dropdownMenuItem
-                                                      )}
+                                                      }
                                                       disableGutters
                                                       selected={
                                                         index ===
@@ -423,9 +422,9 @@ function AppMenu() {
                                                       }
                                                     >
                                                       <Button
-                                                        className={clsx(
+                                                        className={
                                                           classes.dropdownMenuItemButton
-                                                        )}
+                                                        }
                                                         size="large"
                                                         fullWidth
                                                         component="a"

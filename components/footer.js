@@ -2,6 +2,7 @@
 import React from "react";
 // next
 import Image from "next/image";
+import Link from "next/link";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -14,34 +15,33 @@ import PinterestIcon from "@material-ui/icons/Pinterest";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
+import MuiLink from "@material-ui/core/Link";
 // import
-import clsx from "clsx";
 import Rgba from "color-to-rgba";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor:
-      theme.palette.type === "dark" ? theme.palette.background.paper : "",
+      theme.palette.type === "dark" && theme.palette.background.paper,
   },
-  copyright: {
+  copyrightText: {
     color:
-      theme.palette.type === "dark"
-        ? Rgba(theme.palette.common.white, 0.7)
-        : Rgba(theme.palette.common.white, 0.54),
+      theme.palette.type === "light" && Rgba(theme.palette.common.white, 0.7),
   },
-  icons: {
+  iconsBox: {
     "& > *": {
       marginRight: theme.spacing(0.5),
       "&:last-child": {
         marginRight: 0,
       },
     },
-
-    "& .MuiIconButton-root": {
-      "&:hover": {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.common.white,
-      },
+  },
+  icon: {
+    color:
+      theme.palette.type === "light" && Rgba(theme.palette.common.white, 0.7),
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white,
     },
   },
 }));
@@ -72,35 +72,39 @@ function Footer() {
           <Grid item xs={12}>
             <Box display="flex" alignItems="center">
               <Box flexGrow={1}>
-                <Typography>
-                  <Box
-                    fontSize="body2.fontSize"
-                    component="span"
-                    className={classes.copyright}
-                  >
-                    Copyright &copy; {year} My Theme. All Rights Reserve.
-                  </Box>
+                <Typography
+                  variant="body2"
+                  component="span"
+                  className={classes.copyrightText}
+                >
+                  Copyright &copy; {year}{" "}
+                  <Link href="/login">
+                    <MuiLink component="button" variant="inherit">
+                      My
+                    </MuiLink>
+                  </Link>{" "}
+                  Theme. All Rights Reserve.
                 </Typography>
               </Box>
 
-              <Box className={clsx(classes.copyright, classes.icons)}>
-                <IconButton aria-label="Facebook" color="inherit">
+              <Box className={classes.iconsBox}>
+                <IconButton aria-label="Facebook" className={classes.icon}>
                   <FacebookIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="Twitter" color="inherit">
+                <IconButton aria-label="Twitter" className={classes.icon}>
                   <TwitterIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="YouTube" color="inherit">
+                <IconButton aria-label="YouTube" className={classes.icon}>
                   <YouTubeIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="Pinterest" color="inherit">
+                <IconButton aria-label="Pinterest" className={classes.icon}>
                   <PinterestIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="GitHub" color="inherit">
+                <IconButton aria-label="GitHub" className={classes.icon}>
                   <GitHubIcon fontSize="small" />
                 </IconButton>
               </Box>

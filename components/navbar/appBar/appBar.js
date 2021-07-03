@@ -13,7 +13,6 @@ import {
 // nextjs
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 // material
 import { withStyles } from "@material-ui/core/styles";
@@ -28,7 +27,6 @@ import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import Grid from "@material-ui/core/Grid";
 
 // import
-import clsx from "clsx";
 import { useLoaded } from "../../../hooks/loaded";
 import AppMenu from "./menu";
 
@@ -46,9 +44,6 @@ const LogoButton = withStyles(() => ({
 function Nav() {
   // redux
   const dispatch = useDispatch();
-
-  // nextjs
-  const router = useRouter();
 
   // load component client site
   const loaded = useLoaded();
@@ -105,7 +100,7 @@ function Nav() {
           </Toolbar>
         </Container>
       </AppBar>
-      <Toolbar id="home" className={clsx("back-to-top-anchor")} />
+      <Toolbar id="home" className="back-to-top-anchor" />
     </Fragment>
   );
 }

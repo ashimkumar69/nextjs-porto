@@ -5,6 +5,7 @@ import React, { Fragment } from "react";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import BusinessIcon from "@material-ui/icons/Business";
 
 // import ;
 import ServiceItem from "./serviceItem";
@@ -22,8 +23,8 @@ function Services() {
               subheading={<Fragment>What I can do for you</Fragment>}
               headingtextalign="center"
               heading={<Fragment>My Awesome Service</Fragment>}
-              paragraphtextalign="center"
-              paragraph={
+              bodytextalign="center"
+              body={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -36,9 +37,14 @@ function Services() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={4} justify="center">
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
               title={<Fragment>Business Strategy</Fragment>}
               body={
                 <Fragment>
@@ -50,6 +56,11 @@ function Services() {
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
               title={<Fragment>Website Development</Fragment>}
               body={
                 <Fragment>
@@ -62,7 +73,12 @@ function Services() {
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
-              title={<Fragment>Marketing & Reporting</Fragment>}
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
+              title={<Fragment>Marketing &#38; Reporting</Fragment>}
               body={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -74,6 +90,11 @@ function Services() {
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
               title={<Fragment>Mobile App Development</Fragment>}
               body={
                 <Fragment>
@@ -86,6 +107,11 @@ function Services() {
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
               title={<Fragment>Graphics Designing</Fragment>}
               body={
                 <Fragment>
@@ -98,6 +124,11 @@ function Services() {
           </Grid>
           <Grid item xs={12} sm={6} lg={4}>
             <ServiceItem
+              icon={
+                <Fragment>
+                  <BusinessIcon className="icon" />
+                </Fragment>
+              }
               title={<Fragment>Web designing</Fragment>}
               body={
                 <Fragment>

@@ -1,5 +1,5 @@
 // react
-import React, { Fragment } from "react";
+import React from "react";
 // next
 import Image from "next/image";
 // material
@@ -12,11 +12,9 @@ import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import StarIcon from "@material-ui/icons/Star";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import StarHalfIcon from "@material-ui/icons/StarHalf";
 import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 import Grid from "@material-ui/core/Grid";
+import Rating from "@material-ui/lab/Rating";
 
 const StyledCardHeader = withStyles({
   root: {
@@ -43,9 +41,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "50px",
     backgroundColor: theme.palette.background.default,
   },
+  rating: {
+    color: theme.palette.primary.main,
+  },
 }));
 
-function TestimonialsCard() {
+function TestimonialsCard(props) {
   const classes = useStyles();
 
   return (
@@ -53,30 +54,29 @@ function TestimonialsCard() {
       <CardContent>
         <Grid container direction="column" justify="center" alignItems="center">
           <Grid item>
-            <Typography component="div">
-              <Box
-                my={1}
-                color="text.secondary"
-                fontSize="body2.fontSize"
-                component="p"
-                textAlign="center"
-              >
-                This impressive paella is a perfect party dish and a fun meal to
-                cook together with your guests. Add 1 cup of frozen peas along
-                with the mussels, if you like.
-              </Box>
+            <Typography
+              variant="body1"
+              component="p"
+              align="center"
+              color="textSecondary"
+            >
+              {props.body}
             </Typography>
           </Grid>
           <Grid item>
             <FormatQuoteIcon className={classes.quote} />
           </Grid>
           <Grid item>
-            <Box fontSize="h6.fontSize">
-              <StarIcon fontSize="inherit" color="primary" />
-              <StarIcon fontSize="inherit" color="primary" />
-              <StarIcon fontSize="inherit" color="primary" />
-              <StarHalfIcon fontSize="inherit" color="primary" />
-              <StarBorderIcon fontSize="inherit" color="primary" />
+            <Box>
+              <Rating
+                name="half-rating-read"
+                size="small"
+                defaultValue={4}
+                value={+props.value}
+                precision={0.5}
+                readOnly
+                className={classes.rating}
+              />
             </Box>
           </Grid>
         </Grid>
@@ -86,15 +86,15 @@ function TestimonialsCard() {
         avatar={
           <Avatar aria-label="avatar">
             <Image
-              src="/images/testimonials/1.jpg"
+              src={props.headeravatar}
               width={50}
               height={50}
               alt="avatar"
             />
           </Avatar>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={props.headertitle}
+        subheader={props.headersubtitle}
       />
     </Card>
   );

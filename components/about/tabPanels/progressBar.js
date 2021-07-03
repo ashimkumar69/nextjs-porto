@@ -6,17 +6,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import
 import PropTypes from "prop-types";
 
 function LinearProgressWithLabel(props) {
+  let onlyXs = useMediaQuery("(max-width:599.95px)");
   return (
     <Box display="flex" alignItems="center">
-      <Box width="88%" mr={1}>
+      <Box width={onlyXs ? "65%" : "85%"} mr={1}>
         <LinearProgress variant="determinate" value={props.value} />
       </Box>
-      <Box width="12%">
+      <Box width={onlyXs ? "35%" : "15%"}>
         <Typography variant="body2" color="textSecondary">{`${Math.round(
           props.value
         )}% / ${props.basevalue}%`}</Typography>

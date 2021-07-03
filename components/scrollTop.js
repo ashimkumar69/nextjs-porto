@@ -1,6 +1,6 @@
 // react
 import React from "react";
-import PropTypes from "prop-types";
+
 // material
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Zoom from "@material-ui/core/Zoom";
@@ -8,11 +8,20 @@ import Fab from "@material-ui/core/Fab";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import { makeStyles } from "@material-ui/core/styles";
 
+// import
+import PropTypes from "prop-types";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "fixed",
-    bottom: theme.spacing(8),
+    bottom: theme.spacing(2),
     right: theme.spacing(2),
+    [theme.breakpoints.down("md")]: {
+      bottom: theme.spacing(9),
+    },
+    [theme.breakpoints.only("xs")]: {
+      bottom: theme.spacing(8),
+    },
   },
 }));
 

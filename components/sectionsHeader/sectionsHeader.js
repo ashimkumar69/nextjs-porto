@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: theme.typography.fontWeightBold,
     marginBottom: theme.spacing(2),
   },
-  paragraph: {
+  body: {
     marginBottom: 0,
   },
   gradientColor: {
@@ -38,7 +38,7 @@ function SectionsHeader(props) {
   const classes = useStyles(props);
   return (
     <Box mb={+props.marginbottom}>
-      <Box className={clsx(classes.textAlign)}>
+      <Box className={classes.textAlign}>
         <Typography
           variant="subtitle1"
           component="span"
@@ -52,7 +52,7 @@ function SectionsHeader(props) {
         variant="h3"
         component="h2"
         align={props.headingtextalign}
-        className={clsx(classes.heading)}
+        className={classes.heading}
       >
         {props.heading}
       </Typography>
@@ -60,10 +60,10 @@ function SectionsHeader(props) {
       <Typography
         variant="body1"
         component="p"
-        align={props.paragraphtextalign}
-        className={clsx(classes.paragraph)}
+        align={props.bodytextalign}
+        className={classes.body}
       >
-        {props.paragraph}
+        {props.body}
       </Typography>
     </Box>
   );

@@ -21,7 +21,23 @@ const HireMeButton = withStyles(() => ({
   },
 }))(Button);
 
+const useStyle = makeStyles((theme) => ({
+  grid1: {
+    order: 0,
+    [theme.breakpoints.down("sm")]: {
+      order: 1,
+    },
+  },
+  grid2: {
+    order: 1,
+    [theme.breakpoints.down("sm")]: {
+      order: 0,
+    },
+  },
+}));
+
 function Contact() {
+  const classes = useStyle();
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const subjectInputRef = useRef();
@@ -68,15 +84,15 @@ function Contact() {
     <Box component="section" py={10} id="contact">
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          <Grid item xs={7}>
+          <Grid item xs={12} md={7} className={classes.grid1}>
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign="left"
               subheading={<Fragment>Let's Say Hi</Fragment>}
               headingtextalign="left"
               heading={<Fragment>Hire Me.</Fragment>}
-              paragraphtextalign="left"
-              paragraph={
+              bodytextalign="left"
+              body={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -164,7 +180,8 @@ function Contact() {
               </Grid>
             </form>
           </Grid>
-          <Grid item xs={5}>
+
+          <Grid item xs={12} md={5} className={classes.grid2}>
             <Box borderRadius={4} clone>
               <Image
                 src="/images/about/2.jpg"

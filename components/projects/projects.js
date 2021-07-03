@@ -12,15 +12,15 @@ function Projects() {
     <Box component="section" py={10} id="projects">
       <Container maxWidth="lg">
         <Grid container justify="center" alignItems="center">
-          <Grid item xs={8}>
+          <Grid item xs={12} lg={8}>
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
               subheading={<Fragment>My complete project</Fragment>}
               headingtextalign="center"
               heading={<Fragment>My Latest Project</Fragment>}
-              paragraphtextalign="center"
-              paragraph={
+              bodytextalign="center"
+              body={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Repellat voluptas aut facilis a voluptates ad praesentium
@@ -32,24 +32,90 @@ function Projects() {
             />
           </Grid>
         </Grid>
-        <Grid container spacing={4}>
-          <Grid item xs={4}>
-            <ProjectItem />
+        <Grid container spacing={4} justify="center">
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
-          <Grid item xs={4}>
-            <ProjectItem />
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
-          <Grid item xs={4}>
-            <ProjectItem />
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
-          <Grid item xs={4}>
-            <ProjectItem />
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
-          <Grid item xs={4}>
-            <ProjectItem />
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
-          <Grid item xs={4}>
-            <ProjectItem />
+          <Grid item xs={12} sm={6} lg={4}>
+            <ProjectItem
+              image="/images/projects/1.jpg"
+              subtitle={<Fragment>Photoshop</Fragment>}
+              title={<Fragment>Photoshop Design</Fragment>}
+              body={
+                <Fragment>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
+                  deleniti distinctio sit eum nesciunt dolor.
+                </Fragment>
+              }
+              path="/login"
+            />
           </Grid>
         </Grid>
       </Container>
