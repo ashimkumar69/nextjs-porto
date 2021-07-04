@@ -198,10 +198,10 @@ function Contact() {
           <Grid item xs={12} md={5} className={classes.grid2}>
             <Box borderRadius={4} clone>
               <Image
-                src="/images/about/2.jpg"
+                src="/images/about/2.png"
                 alt="hero banner image"
-                width={495}
-                height={595}
+                width={500}
+                height={560}
                 layout="responsive"
               />
             </Box>

@@ -2,7 +2,7 @@
 import React from "react";
 // next
 import Image from "next/image";
-import Link from "next/link";
+
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -15,7 +15,7 @@ import PinterestIcon from "@material-ui/icons/Pinterest";
 import GitHubIcon from "@material-ui/icons/GitHub";
 import { makeStyles } from "@material-ui/core/styles";
 import IconButton from "@material-ui/core/IconButton";
-import MuiLink from "@material-ui/core/Link";
+import Link from "@material-ui/core/Link";
 // import
 import Rgba from "color-to-rgba";
 
@@ -78,33 +78,51 @@ function Footer() {
                   className={classes.copyrightText}
                 >
                   Copyright &copy; {year}{" "}
-                  <Link href="/login">
-                    <MuiLink component="button" variant="inherit">
-                      Porto
-                    </MuiLink>
+                  <Link href="/login" variant="inherit">
+                    Porto
                   </Link>{" "}
                   Theme. All Rights Reserve.
                 </Typography>
               </Box>
 
               <Box className={classes.iconsBox}>
-                <IconButton aria-label="Facebook" className={classes.icon}>
+                <IconButton
+                  aria-label="Facebook"
+                  className={classes.icon}
+                  href="https://www.facebook.com/"
+                >
                   <FacebookIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="Twitter" className={classes.icon}>
+                <IconButton
+                  aria-label="Twitter"
+                  className={classes.icon}
+                  href="https://twitter.com/"
+                >
                   <TwitterIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="YouTube" className={classes.icon}>
+                <IconButton
+                  aria-label="YouTube"
+                  className={classes.icon}
+                  href="https://www.youtube.com"
+                >
                   <YouTubeIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="Pinterest" className={classes.icon}>
+                <IconButton
+                  aria-label="Pinterest"
+                  className={classes.icon}
+                  href="https://www.pinterest.com/"
+                >
                   <PinterestIcon fontSize="small" />
                 </IconButton>
 
-                <IconButton aria-label="GitHub" className={classes.icon}>
+                <IconButton
+                  aria-label="GitHub"
+                  className={classes.icon}
+                  href="https://github.com/"
+                >
                   <GitHubIcon fontSize="small" />
                 </IconButton>
               </Box>

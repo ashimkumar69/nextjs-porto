@@ -24,10 +24,10 @@ function About() {
             <Box borderRadius={4}>
               <Box borderRadius={4} clone>
                 <Image
-                  src="/images/about/1.jpg"
+                  src="/images/about/1.png"
                   alt="hero banner image"
-                  width={495}
-                  height={580}
+                  width={500}
+                  height={560}
                   layout="responsive"
                 />
               </Box>

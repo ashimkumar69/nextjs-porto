@@ -49,7 +49,8 @@ function Services() {
               body={
                 <Fragment>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas necessitatibus.
+                  Repellat voluptas aut facilis a voluptates ad praesentium
+                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
                 </Fragment>
               }
             />

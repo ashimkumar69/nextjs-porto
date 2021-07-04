@@ -71,8 +71,8 @@ function News(props) {
       <Box className={classes.imageBox}>
         <Image
           src={props.image}
-          width={300}
-          height={200}
+          width={400}
+          height={260}
           layout="responsive"
           alt="avatar"
           className={classes.image}
