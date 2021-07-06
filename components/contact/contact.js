@@ -3,6 +3,7 @@ import React, { Fragment, useRef, useState } from "react";
 
 // next
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 // material
 import Box from "@material-ui/core/Box";
@@ -11,14 +12,21 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Snackbar from "@material-ui/core/Snackbar";
+import Slide from "@material-ui/core/Slide";
+import Alert from "@material-ui/lab/Alert";
 
 // import ;
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
-import { Typography } from "@material-ui/core";
 
-const HireMeButton = withStyles(() => ({
+function SlideTransition(props) {
+  return <Slide {...props} direction="left" />;
+}
+
+const HireMeButton = withStyles((theme) => ({
   root: {
-    padding: "10px 40px",
+    padding: theme.spacing(1.25, 5),
   },
 }))(Button);
 
@@ -57,7 +65,7 @@ function Contact() {
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-
+    handleClick();
     setNameError(false);
     setEmailError(false);
     setSubjectError(false);
@@ -86,6 +94,20 @@ function Contact() {
     //   console.log(subjectInputRef.current.value);
     //   console.log(messageInputRef.current.value);
     // }
+  };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
   return (
     <Box component="section" py={10} id="contact">
@@ -190,6 +212,24 @@ function Contact() {
                   >
                     Submit Now
                   </HireMeButton>
+                  <Snackbar
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={open}
+                    autoHideDuration={6000}
+                    TransitionComponent={SlideTransition}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      severity="success"
+                      elevation={6}
+                      variant="filled"
+                    >
+                      This is a success message!
+                    </Alert>
+                  </Snackbar>
                 </Grid>
               </Grid>
             </form>

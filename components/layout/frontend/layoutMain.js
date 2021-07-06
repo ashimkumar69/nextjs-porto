@@ -4,8 +4,8 @@ import React, { Fragment } from "react";
 import { Box } from "@material-ui/core";
 
 // import
-import Navbar from "../navbar/navbar";
-import Footer from "../footer";
+import Navbar from "../../navbar/navbar";
+import Footer from "../../footer";
 
 function FrontendLayoutMain(props) {
   return (

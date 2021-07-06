@@ -61,15 +61,15 @@ const navList = [
       },
       {
         id: 3,
-        title: "Settings",
-        path: "",
+        title: "Dashboard",
+        path: "/dashboard",
         submenu: [],
       },
     ],
   },
   {
     id: 9,
-    title: "Mors",
+    title: "More",
     path: "",
     submenu: [
       {

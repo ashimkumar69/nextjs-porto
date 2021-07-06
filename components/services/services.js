@@ -6,6 +6,11 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import BusinessIcon from "@material-ui/icons/Business";
+import LanguageIcon from "@material-ui/icons/Language";
+import LocalMallIcon from "@material-ui/icons/LocalMall";
+import MobileFriendlyIcon from "@material-ui/icons/MobileFriendly";
+import PieChartIcon from "@material-ui/icons/PieChart";
+import ArtTrackIcon from "@material-ui/icons/ArtTrack";
 
 // import ;
 import ServiceItem from "./serviceItem";
@@ -59,7 +64,7 @@ function Services() {
             <ServiceItem
               icon={
                 <Fragment>
-                  <BusinessIcon className="icon" />
+                  <LanguageIcon className="icon" />
                 </Fragment>
               }
               title={<Fragment>Website Development</Fragment>}
@@ -76,7 +81,7 @@ function Services() {
             <ServiceItem
               icon={
                 <Fragment>
-                  <BusinessIcon className="icon" />
+                  <LocalMallIcon className="icon" />
                 </Fragment>
               }
               title={<Fragment>Marketing &#38; Reporting</Fragment>}
@@ -93,7 +98,7 @@ function Services() {
             <ServiceItem
               icon={
                 <Fragment>
-                  <BusinessIcon className="icon" />
+                  <MobileFriendlyIcon className="icon" />
                 </Fragment>
               }
               title={<Fragment>Mobile App Development</Fragment>}
@@ -110,7 +115,7 @@ function Services() {
             <ServiceItem
               icon={
                 <Fragment>
-                  <BusinessIcon className="icon" />
+                  <PieChartIcon className="icon" />
                 </Fragment>
               }
               title={<Fragment>Graphics Designing</Fragment>}
@@ -127,7 +132,7 @@ function Services() {
             <ServiceItem
               icon={
                 <Fragment>
-                  <BusinessIcon className="icon" />
+                  <ArtTrackIcon className="icon" />
                 </Fragment>
               }
               title={<Fragment>Web designing</Fragment>}

@@ -11,7 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 // import
-import AuthLayout from "../components/layout/authLayout";
+import AuthLayout from "../components/layout/frontend/frontend";
 import Copyright from "../components/auth/copyright";
 import Header from "../components/auth/header";
 

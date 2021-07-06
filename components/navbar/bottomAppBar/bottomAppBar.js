@@ -5,29 +5,17 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-// redux
-import { useDispatch, useSelector } from "react-redux";
-
-// store
-import {
-  themeDarkAction,
-  themeLightAction,
-} from "../../../reduxStore/actions/index";
-
 // material
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
-import IconButton from "@material-ui/core/IconButton";
-import Brightness6Icon from "@material-ui/icons/Brightness6";
-import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 
 // import
 import AccountMenu from "./accountMenu";
 import SearchMenu from "./searchMenu";
 import SwipeableDrawerMenu from "./swipeableDrawerMenu/swipeableDrawerMenu";
-import { useLoaded } from "../../../hooks/loaded";
+import ThemeIconButton from "../../themeIconButton";
 
 const LogoButton = withStyles(() => ({
   root: {
@@ -57,19 +45,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BottomAppBar() {
-  // redux
-  const dispatch = useDispatch();
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
-
-  // load component client site
-  const loaded = useLoaded();
-
-  // theme color
-  const isThemeLight = useSelector((state) => state.theme.themeLight);
-  const changeThemeHandler = () => {
-    isThemeLight ? dispatch(themeDarkAction()) : dispatch(themeLightAction());
-  };
 
   return (
     <React.Fragment>
@@ -109,18 +86,8 @@ export default function BottomAppBar() {
           <div className={classes.grow} />
           <SearchMenu />
           {auth && <AccountMenu />}
-          <IconButton
-            edge="end"
-            aria-label="change theme color"
-            color="inherit"
-            onClick={changeThemeHandler}
-          >
-            {loaded && isThemeLight ? (
-              <Brightness6Icon />
-            ) : (
-              <BrightnessHighIcon />
-            )}
-          </IconButton>
+
+          <ThemeIconButton />
         </Toolbar>
       </AppBar>
     </React.Fragment>

@@ -1,15 +1,6 @@
 // react
 import React, { Fragment } from "react";
 
-// redux
-import { useDispatch, useSelector } from "react-redux";
-
-// store
-import {
-  themeDarkAction,
-  themeLightAction,
-} from "../../../reduxStore/actions/index";
-
 // nextjs
 import Image from "next/image";
 import Link from "next/link";
@@ -21,14 +12,11 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-import Brightness6Icon from "@material-ui/icons/Brightness6";
-import BrightnessHighIcon from "@material-ui/icons/BrightnessHigh";
 import Grid from "@material-ui/core/Grid";
 
 // import
-import { useLoaded } from "../../../hooks/loaded";
 import AppMenu from "./menu";
+import ThemeIconButton from "../../themeIconButton";
 
 const LogoButton = withStyles(() => ({
   root: {
@@ -42,18 +30,6 @@ const LogoButton = withStyles(() => ({
 }))(Button);
 
 function Nav() {
-  // redux
-  const dispatch = useDispatch();
-
-  // load component client site
-  const loaded = useLoaded();
-
-  // theme color
-  const isThemeLight = useSelector((state) => state.theme.themeLight);
-  const changeThemeHandler = () => {
-    isThemeLight ? dispatch(themeDarkAction()) : dispatch(themeLightAction());
-  };
-
   return (
     <Fragment>
       <AppBar position="fixed" component="div">
@@ -82,18 +58,7 @@ function Nav() {
                       Login
                     </Button>
                   </Link>
-
-                  <IconButton
-                    aria-label="change theme color"
-                    color="inherit"
-                    onClick={changeThemeHandler}
-                  >
-                    {loaded && isThemeLight ? (
-                      <Brightness6Icon />
-                    ) : (
-                      <BrightnessHighIcon />
-                    )}
-                  </IconButton>
+                  <ThemeIconButton />
                 </Box>
               </Grid>
             </Grid>

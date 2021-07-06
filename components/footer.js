@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:
       theme.palette.type === "dark" && theme.palette.background.paper,
   },
+  copyrightBox: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
   copyrightText: {
     color:
       theme.palette.type === "light" && Rgba(theme.palette.common.white, 0.7),
@@ -70,7 +78,7 @@ function Footer() {
             </Box>
           </Grid>
           <Grid item xs={12}>
-            <Box display="flex" alignItems="center">
+            <Box className={classes.copyrightBox}>
               <Box flexGrow={1}>
                 <Typography
                   variant="body2"
