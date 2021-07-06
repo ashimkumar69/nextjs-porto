@@ -9,7 +9,7 @@ import ProgressBar from "./progressBar";
 
 function Skills() {
   return (
-    <List aria-label="List of Bar" disablePadding>
+    <List aria-label="List of skills" disablePadding>
       <ListItem disableGutters dense>
         <ListItemText primary="HTML" />
       </ListItem>

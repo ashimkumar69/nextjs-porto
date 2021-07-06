@@ -1,8 +1,7 @@
 // react
 import React from "react";
-
-// import slick
-import Slider from "react-slick";
+// redux
+import { useSelector } from "react-redux";
 
 // material
 import Box from "@material-ui/core/Box";
@@ -10,6 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // import
 import HeroBannerItem from "./heroBannerItem.js";
+import Slider from "react-slick";
 
 const useStyles = makeStyles((theme) => ({
   slickSlider: {
@@ -71,6 +71,8 @@ const useStyles = makeStyles((theme) => ({
 function HeroBanner() {
   //material style
   const classes = useStyles();
+  // heroBanner
+  const heroBanner = useSelector((state) => state.heroBanner.heroBanner);
 
   // slick slider
   const settings = {
@@ -109,9 +111,16 @@ function HeroBanner() {
   return (
     <Box component="section">
       <Slider {...settings} className={classes.slickSlider}>
-        <HeroBannerItem />
-        <HeroBannerItem />
-        <HeroBannerItem />
+        {heroBanner.map((item) => (
+          <React.Fragment key={item.id}>
+            <HeroBannerItem
+              image={item.image}
+              subheading={item.subheading}
+              heading={item.heading}
+              path={item.path}
+            />
+          </React.Fragment>
+        ))}
       </Slider>
     </Box>
   );

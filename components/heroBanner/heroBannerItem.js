@@ -83,7 +83,7 @@ let imageSize = {
   height: 700,
 };
 
-function HeroBannerItem() {
+function HeroBannerItem(props) {
   //material style
   const classes = useStyles();
 
@@ -111,7 +111,7 @@ function HeroBannerItem() {
   return (
     <Box className={classes.slider}>
       <Image
-        src="/images/heroBanner/1.jpg"
+        src={props.image}
         alt="hero banner image"
         width={imageSize.width}
         height={imageSize.height}
@@ -126,7 +126,7 @@ function HeroBannerItem() {
                 component="span"
                 className={clsx(classes.subHeading, classes.gradientColor)}
               >
-                Web World pixel designer
+                {props.subheading}
               </Typography>
 
               <Typography
@@ -134,10 +134,10 @@ function HeroBannerItem() {
                 component="h2"
                 className={clsx(classes.heading, classes.gradientColor)}
               >
-                Hello, I’m Designer. Welcome to my World.
+                {props.heading}
               </Typography>
               <Box className={classes.buttonBox}>
-                <Link href="/login">
+                <Link href={props.path}>
                   <Button
                     component="a"
                     variant="contained"
