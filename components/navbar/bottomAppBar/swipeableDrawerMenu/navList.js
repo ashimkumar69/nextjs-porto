@@ -1,6 +1,8 @@
 import React from "react";
 // next
 import { useRouter } from "next/router";
+// redux
+import { useSelector } from "react-redux";
 //material
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -10,116 +12,6 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-
-const navList = [
-  { id: 1, title: "Home", path: "#home", submenu: [] },
-  { id: 2, title: "About", path: "#about", submenu: [] },
-  { id: 3, title: "Services", path: "#services", submenu: [] },
-  { id: 4, title: "Projects", path: "#projects", submenu: [] },
-  {
-    id: 5,
-    title: "Testimonials",
-    path: "#testimonials",
-    submenu: [],
-  },
-  { id: 6, title: "News", path: "#news", submenu: [] },
-  { id: 7, title: "Contact", path: "#contact", submenu: [] },
-  {
-    id: 8,
-    title: "Pages",
-    path: "",
-    submenu: [
-      {
-        id: 1,
-        title: "Auth",
-        path: "",
-        submenu: [
-          {
-            id: 1,
-            title: "Login",
-            path: "/login",
-            submenu: [],
-          },
-
-          { id: 2, title: "Register", path: "/register", submenu: [] },
-          {
-            id: 3,
-            title: "Reset Password",
-            path: "/reset-password",
-            submenu: [],
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Error Page",
-        path: "",
-        submenu: [
-          { id: 1, title: "404 Page", path: "", submenu: [] },
-          { id: 2, title: "500 Page", path: "", submenu: [] },
-        ],
-      },
-      {
-        id: 3,
-        title: "Dashboard",
-        path: "/dashboard",
-        submenu: [],
-      },
-    ],
-  },
-  {
-    id: 9,
-    title: "More",
-    path: "",
-    submenu: [
-      {
-        id: 1,
-        title: "Level 1",
-        path: "",
-        submenu: [
-          {
-            id: 1,
-            title: "Level 2",
-            path: "",
-            submenu: [],
-          },
-
-          { id: 2, title: "Level 2", path: "", submenu: [] },
-          {
-            id: 3,
-            title: "Level 2",
-            path: "",
-            submenu: [
-              {
-                id: 1,
-                title: " Level 3",
-                path: "",
-                submenu: [],
-              },
-              { id: 2, title: " Level 3", path: "", submenu: [] },
-              { id: 3, title: "Level 3", path: "", submenu: [] },
-            ],
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Level 1",
-        path: "",
-        submenu: [
-          { id: 1, title: "Level 2", path: "", submenu: [] },
-          { id: 2, title: "Level 2", path: "", submenu: [] },
-        ],
-      },
-      {
-        id: 3,
-        title: "Level 1",
-        path: "",
-        submenu: [],
-      },
-    ],
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -132,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
 function NavList(props) {
   const classes = useStyles();
   const router = useRouter();
+
+  // nav menu list
+  const navMenuList = useSelector((state) => state.navMenuList.navMenuList);
 
   //    selected  list level 1
   const [selectedIndexLevel1, setSelectedIndexLevel1] = React.useState("");
@@ -240,7 +135,7 @@ function NavList(props) {
   return (
     <List component="nav" className={classes.root}>
       {/* level 1 */}
-      {navList.map((item, index) => (
+      {navMenuList.map((item, index) => (
         <React.Fragment key={item.id}>
           <ListItem
             button

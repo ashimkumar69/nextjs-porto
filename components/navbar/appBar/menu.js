@@ -2,6 +2,8 @@ import React from "react";
 
 // nextjs
 import { useRouter } from "next/router";
+// redux
+import { useSelector } from "react-redux";
 // material
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -15,111 +17,6 @@ import MenuList from "@material-ui/core/MenuList";
 
 // import
 import Scrollspy from "react-scrollspy";
-
-const menuList = [
-  { id: 1, title: "Home", path: "#home", submenu: [] },
-  { id: 2, title: "About", path: "#about", submenu: [] },
-  { id: 3, title: "Services", path: "#services", submenu: [] },
-  { id: 4, title: "Projects", path: "#projects", submenu: [] },
-  { id: 5, title: "Testimonials", path: "#testimonials", submenu: [] },
-  { id: 6, title: "News", path: "#news", submenu: [] },
-  { id: 7, title: "Contact", path: "#contact", submenu: [] },
-  {
-    id: 8,
-    title: "Pages",
-    path: "",
-    submenu: [
-      {
-        id: 1,
-        title: "Auth",
-        path: "",
-        submenu: [
-          {
-            id: 1,
-            title: "Login",
-            path: "/login",
-            submenu: [],
-          },
-
-          { id: 2, title: "Register", path: "/register", submenu: [] },
-          {
-            id: 3,
-            title: "Reset Password",
-            path: "/reset-password",
-            submenu: [],
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Error Page",
-        path: "",
-        submenu: [
-          { id: 1, title: "404 Page", path: "", submenu: [] },
-          { id: 2, title: "500 Page", path: "", submenu: [] },
-        ],
-      },
-      {
-        id: 3,
-        title: "Dashboard",
-        path: "/dashboard",
-        submenu: [],
-      },
-    ],
-  },
-  {
-    id: 9,
-    title: "More",
-    path: "",
-    submenu: [
-      {
-        id: 1,
-        title: "Level 1",
-        path: "",
-        submenu: [
-          {
-            id: 1,
-            title: "Level 2",
-            path: "",
-            submenu: [],
-          },
-
-          { id: 2, title: "Level 2", path: "", submenu: [] },
-          {
-            id: 3,
-            title: "Level 2",
-            path: "",
-            submenu: [
-              {
-                id: 1,
-                title: " Level 3",
-                path: "",
-                submenu: [],
-              },
-              { id: 2, title: " Level 3", path: "", submenu: [] },
-              { id: 3, title: "Level 3", path: "", submenu: [] },
-            ],
-          },
-        ],
-      },
-      {
-        id: 2,
-        title: "Level 1",
-        path: "",
-        submenu: [
-          { id: 1, title: "Level 2", path: "", submenu: [] },
-          { id: 2, title: "Level 2", path: "", submenu: [] },
-        ],
-      },
-      {
-        id: 3,
-        title: "Level 1",
-        path: "",
-        submenu: [],
-      },
-    ],
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   menuList: {
@@ -157,6 +54,9 @@ function AppMenu() {
 
   // nextjs
   const router = useRouter();
+
+  // nav menu list
+  const navMenuList = useSelector((state) => state.navMenuList.navMenuList);
 
   // dropdown menu Level1
   const [anchorElLevel1, setAnchorElLevel1] = React.useState(null);
@@ -245,7 +145,7 @@ function AppMenu() {
         className={classes.menuList}
         offset={-10}
       >
-        {menuList.map((item, index) => (
+        {navMenuList.map((item, index) => (
           <Box component="li" key={item.id}>
             <Button
               className={classes.menuLinkButton}
