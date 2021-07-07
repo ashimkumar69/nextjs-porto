@@ -1,6 +1,7 @@
 // react
 import React, { Fragment } from "react";
-
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -17,6 +18,29 @@ import ServiceItem from "./serviceItem";
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 
 function Services() {
+  const { sectionHeader, services } = useSelector(
+    (state) => state.services.services
+  );
+
+  const icon = (index) => {
+    let icon;
+    switch (index) {
+      case 0:
+        return (icon = <BusinessIcon className="icon" />);
+      case 1:
+        return (icon = <LanguageIcon className="icon" />);
+      case 2:
+        return (icon = <LocalMallIcon className="icon" />);
+      case 3:
+        return (icon = <MobileFriendlyIcon className="icon" />);
+      case 4:
+        return (icon = <PieChartIcon className="icon" />);
+      case 5:
+        return (icon = <ArtTrackIcon className="icon" />);
+    }
+    return icon;
+  };
+
   return (
     <Box component="section" py={10} id="services">
       <Container maxWidth="lg">
@@ -25,126 +49,27 @@ function Services() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={<Fragment>What I can do for you</Fragment>}
+              subheading={sectionHeader.subheading}
               headingtextalign="center"
-              heading={<Fragment>My Awesome Service</Fragment>}
+              heading={sectionHeader.heading}
               bodytextalign="center"
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
-                </Fragment>
-              }
+              body={sectionHeader.body}
             />
           </Grid>
         </Grid>
 
         <Grid container spacing={4} justify="center">
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <BusinessIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Business Strategy</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <LanguageIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Website Development</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <LocalMallIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Marketing &#38; Reporting</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <MobileFriendlyIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Mobile App Development</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <PieChartIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Graphics Designing</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ServiceItem
-              icon={
-                <Fragment>
-                  <ArtTrackIcon className="icon" />
-                </Fragment>
-              }
-              title={<Fragment>Web designing</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! voluptas vitae est! Velit, necessitatibus.
-                </Fragment>
-              }
-            />
-          </Grid>
+          {services.map((item, index) => (
+            <React.Fragment key={item.id}>
+              <Grid item xs={12} sm={6} lg={4}>
+                <ServiceItem
+                  icon={icon(index)}
+                  title={item.title}
+                  body={item.body}
+                />
+              </Grid>
+            </React.Fragment>
+          ))}
         </Grid>
       </Container>
     </Box>

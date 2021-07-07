@@ -7,37 +7,19 @@ import ListItemText from "@material-ui/core/ListItemText";
 // import
 import ProgressBar from "./progressBar";
 
-function Skills() {
+function Skills(props) {
   return (
     <List aria-label="List of skills" disablePadding>
-      <ListItem disableGutters dense>
-        <ListItemText primary="HTML" />
-      </ListItem>
-      <ListItem disableGutters dense>
-        <ProgressBar basevalue={90} />
-      </ListItem>
-
-      <ListItem disableGutters dense>
-        <ListItemText primary="CSS" />
-      </ListItem>
-
-      <ListItem disableGutters dense>
-        <ProgressBar basevalue={85} />
-      </ListItem>
-      <ListItem disableGutters dense>
-        <ListItemText primary="JS" />
-      </ListItem>
-
-      <ListItem disableGutters dense>
-        <ProgressBar basevalue={80} />
-      </ListItem>
-      <ListItem disableGutters dense>
-        <ListItemText primary="REACTJS" />
-      </ListItem>
-
-      <ListItem disableGutters dense>
-        <ProgressBar basevalue={70} />
-      </ListItem>
+      {props.skills.map((item) => (
+        <React.Fragment key={item.id}>
+          <ListItem disableGutters dense>
+            <ListItemText primary={item.primaryTitle} />
+          </ListItem>
+          <ListItem disableGutters dense>
+            <ProgressBar basevalue={item.basevalue} />
+          </ListItem>
+        </React.Fragment>
+      ))}
     </List>
   );
 }

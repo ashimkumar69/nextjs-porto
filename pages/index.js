@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import {
   getNavMenuListAction,
   getHeroBannerAction,
+  getAboutAction,
+  getServicesAction,
 } from "../reduxStore/actions/index";
 
 // import
@@ -20,6 +22,7 @@ import Contact from "../components/contact/contact";
 import { getNavMenuList } from "../db/navMenuList";
 import { getHeroBanner } from "../db/heroBanne";
 import { getAbout } from "../db/about";
+import { getServices } from "../db/services";
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -27,7 +30,11 @@ function Home(props) {
   dispatch(getNavMenuListAction(props.navMenuList));
   // heroBanner
   dispatch(getHeroBannerAction(props.heroBanner));
-  console.log(props.about);
+  // about
+  dispatch(getAboutAction(props.about));
+  // services
+  dispatch(getServicesAction(props.services));
+
   return (
     <Fragment>
       <HeroBanner />
@@ -45,6 +52,7 @@ export const getStaticProps = async () => {
   const navMenuList = JSON.parse(await getNavMenuList());
   const heroBanner = JSON.parse(await getHeroBanner());
   const about = JSON.parse(await getAbout());
+  const services = JSON.parse(await getServices());
 
   if (!navMenuList) {
     return {
@@ -61,11 +69,18 @@ export const getStaticProps = async () => {
       notFound: true,
     };
   }
+  if (!services) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      navMenuList: navMenuList,
-      heroBanner: heroBanner,
-      about: about,
+      navMenuList,
+      heroBanner,
+      about,
+      services,
     },
     revalidate: 10,
   };

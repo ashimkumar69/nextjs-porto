@@ -2,12 +2,12 @@
 import { NAV_MENU_LIST } from "../types/index";
 import { updateState } from "../utilities/updateState";
 
-// initial  theme reducer
+// initial   reducer
 const initialNavMenuList = {
   navMenuList: [],
 };
 
-// theme reducer
+//  reducer
 export const navMenuListReducer = (state = initialNavMenuList, action) => {
   switch (action.type) {
     case NAV_MENU_LIST:

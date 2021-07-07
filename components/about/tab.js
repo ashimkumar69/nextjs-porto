@@ -48,7 +48,7 @@ function a11yProps(index) {
   };
 }
 
-export default function SkillTabs() {
+export default function SkillTabs(props) {
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
 
@@ -80,14 +80,14 @@ export default function SkillTabs() {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-          <Skills />
+          <Skills skills={props.tab.skills} />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <Experiences />
+          <Experiences experiences={props.tab.experiences} />
         </TabPanel>
 
         <TabPanel value={value} index={2} dir={theme.direction}>
-          <Education />
+          <Education education={props.tab.education} />
         </TabPanel>
       </SwipeableViews>
     </Paper>

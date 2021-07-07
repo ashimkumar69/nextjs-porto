@@ -2,6 +2,9 @@
 import React, { Fragment } from "react";
 // next
 import Image from "next/image";
+
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -16,6 +19,9 @@ function About() {
   // banner image size in different screen
   let downMd = useMediaQuery("(max-width:1279.95px)");
 
+  // about
+  const about = useSelector((state) => state.about.about);
+
   return (
     <Box component="section" py={10} id="about">
       <Container maxWidth="lg">
@@ -24,7 +30,7 @@ function About() {
             <Box borderRadius={4}>
               <Box borderRadius={4} clone>
                 <Image
-                  src="/images/about/1.png"
+                  src={about.image}
                   alt="hero banner image"
                   width={500}
                   height={560}
@@ -37,23 +43,15 @@ function About() {
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign={downMd ? "center" : "left"}
-              subheading={<Fragment>My About Details</Fragment>}
+              subheading={about.sectionHeader.subheading}
               headingtextalign={downMd ? "center" : "left"}
-              heading={<Fragment>About Me</Fragment>}
+              heading={about.sectionHeader.heading}
               bodytextalign={downMd ? "center" : "left"}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
-                </Fragment>
-              }
+              body={about.sectionHeader.body}
             />
 
             <Box>
-              <Tab />
+              <Tab tab={about.tab} />
             </Box>
           </Grid>
         </Grid>
