@@ -8,6 +8,7 @@ import { aboutReducer } from "./aboutReducers";
 import { servicesReducer } from "./servicesReducers";
 import { projectsReducer } from "./projectsReducers";
 import { testimonialsReducer } from "./testimonialsReducers";
+import { newsReducer } from "./newsReduces";
 
 // combine all reducer
 const reducers = {
@@ -18,6 +19,7 @@ const reducers = {
   services: servicesReducer,
   projects: projectsReducer,
   testimonials: testimonialsReducer,
+  news: newsReducer,
 };
 
 export default combineReducers(reducers);

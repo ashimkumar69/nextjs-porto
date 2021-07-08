@@ -5,3 +5,4 @@ export { ABOUT } from "./aboutTypes";
 export { SERVICES } from "./servicesTypes";
 export { PROJECTS } from "./projectsTypes";
 export { TESTIMONIALS } from "./testimonialsTypes";
+export { NEWS } from "./newsTypes";

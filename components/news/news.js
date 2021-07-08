@@ -1,6 +1,7 @@
 // react
 import React, { Fragment } from "react";
-
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -11,6 +12,7 @@ import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 import NewsItem from "./newsItem";
 
 function News() {
+  const { sectionHeader, news } = useSelector((state) => state.news.news);
   return (
     <Box component="section" py={10} id="news">
       <Container maxWidth="lg">
@@ -19,66 +21,32 @@ function News() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={<Fragment>Latest News</Fragment>}
+              subheading={sectionHeader.subheading}
               headingtextalign="center"
-              heading={<Fragment> News</Fragment>}
+              heading={sectionHeader.heading}
               bodytextalign="center"
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
-                </Fragment>
-              }
+              body={sectionHeader.body}
             />
           </Grid>
         </Grid>
 
         <Grid container spacing={4} justify="center">
-          <Grid item xs={12} sm={6} lg={4}>
-            <NewsItem
-              headeravatar="/images/testimonials/1.jpg"
-              headertitle="Shrimp and Chorizo Paella"
-              headersubtitle="CEO Math Private Ltd."
-              image="/images/news/1.jpg"
-              date="2 oct 2021"
-              title="This impressive paella is a  party"
-              body=" This impressive paella is a perfect party dish and a fun meal to cook
-              together with your guests. Add 1 cup of frozen peas along with the
-              mussels, if you like."
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <NewsItem
-              headeravatar="/images/testimonials/1.jpg"
-              headertitle="Shrimp and Chorizo Paella"
-              headersubtitle="CEO Math Private Ltd."
-              image="/images/news/1.jpg"
-              date="2 oct 2021"
-              title="This impressive paella is a  party"
-              body=" This impressive paella is a perfect party dish and a fun meal to cook
-              together with your guests. Add 1 cup of frozen peas along with the
-              mussels, if you like."
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <NewsItem
-              headeravatar="/images/testimonials/1.jpg"
-              headertitle="Shrimp and Chorizo Paella"
-              headersubtitle="CEO Math Private Ltd."
-              image="/images/news/1.jpg"
-              date="2 oct 2021"
-              title="This impressive paella is a  party"
-              body=" This impressive paella is a perfect party dish and a fun meal to cook
-              together with your guests. Add 1 cup of frozen peas along with the
-              mussels, if you like."
-              path="/login"
-            />
-          </Grid>
+          {news.map((item) => (
+            <React.Fragment key={item.id}>
+              <Grid item xs={12} sm={6} lg={4}>
+                <NewsItem
+                  headeravatar={item.headeravatar}
+                  headertitle={item.headertitle}
+                  headersubtitle={item.headersubtitle}
+                  image={item.image}
+                  date={item.date}
+                  title={item.title}
+                  body={item.body}
+                  path={item.path}
+                />
+              </Grid>
+            </React.Fragment>
+          ))}
         </Grid>
       </Container>
     </Box>
