@@ -32,15 +32,17 @@ function Projects() {
         </Grid>
         <Grid container spacing={4} justify="center">
           {projects.map((item) => (
-            <Grid item xs={12} sm={6} lg={4}>
-              <ProjectItem
-                image={item.image}
-                subtitle={item.subtitle}
-                title={item.title}
-                body={item.body}
-                path={item.path}
-              />
-            </Grid>
+            <React.Fragment key={item.id}>
+              <Grid item xs={12} sm={6} lg={4}>
+                <ProjectItem
+                  image={item.image}
+                  subtitle={item.subtitle}
+                  title={item.title}
+                  body={item.body}
+                  path={item.path}
+                />
+              </Grid>
+            </React.Fragment>
           ))}
         </Grid>
       </Container>

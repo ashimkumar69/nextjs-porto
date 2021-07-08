@@ -1,4 +1,7 @@
 import React, { Fragment } from "react";
+
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -14,26 +17,26 @@ import TestimonialItem from "./testimonialItem";
 
 const useStyles = makeStyles((theme) => ({
   slickSlider: {
-    "& > .slick-prev": {
-      left: theme.spacing(3),
-    },
-    "& > .slick-next": {
-      right: theme.spacing(3),
-    },
-    "& > .slick-prev , .slick-next": {
-      zIndex: 99,
-      "&:hover , &:focus": {
-        "&::before": {
-          opacity: 1,
-        },
-      },
+    // "& > .slick-prev": {
+    //   left: theme.spacing(3),
+    // },
+    // "& > .slick-next": {
+    //   right: theme.spacing(3),
+    // },
+    // "& > .slick-prev , .slick-next": {
+    //   zIndex: 99,
+    //   "&:hover , &:focus": {
+    //     "&::before": {
+    //       opacity: 1,
+    //     },
+    //   },
 
-      "&::before": {
-        color: theme.palette.primary.main,
-        fontSize: theme.spacing(4),
-        opacity: 0.54,
-      },
-    },
+    //   "&::before": {
+    //     color: theme.palette.primary.main,
+    //     fontSize: theme.spacing(4),
+    //     opacity: 0.54,
+    //   },
+    // },
 
     "& > .slick-dots": {
       bottom: -theme.spacing(4),
@@ -70,6 +73,10 @@ const useStyles = makeStyles((theme) => ({
 function Testimonials() {
   //material style
   const classes = useStyles();
+
+  const { sectionHeader, testimonials } = useSelector(
+    (state) => state.testimonials.testimonials
+  );
   // slick slider
   const settings = {
     dots: true,
@@ -113,69 +120,30 @@ function Testimonials() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={<Fragment>Top Testimonials</Fragment>}
+              subheading={sectionHeader.subheading}
               headingtextalign="center"
-              heading={<Fragment>Testimonials</Fragment>}
+              heading={sectionHeader.heading}
               bodytextalign="center"
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
-                </Fragment>
-              }
+              body={sectionHeader.body}
             />
           </Grid>
         </Grid>
         <Grid container>
           <Grid item xs={12}>
             <Slider {...settings} className={classes.slickSlider}>
-              <Box p={2}>
-                <TestimonialItem
-                  headeravatar="/images/testimonials/1.jpg"
-                  headertitle="Shrimp and Chorizo Paella"
-                  headersubtitle="September 14, 2016"
-                  body=" This impressive paella is a perfect party dish and a fun meal to
-                  cook together with your guests. Add 1 cup of frozen peas along
-                  with the mussels, if you like."
-                  value="4.5"
-                />
-              </Box>
-              <Box p={2}>
-                <TestimonialItem
-                  headeravatar="/images/testimonials/1.jpg"
-                  headertitle="Shrimp and Chorizo Paella"
-                  headersubtitle="September 14, 2016"
-                  body=" This impressive paella is a perfect party dish and a fun meal to
-                  cook together with your guests. Add 1 cup of frozen peas along
-                  with the mussels, if you like."
-                  value="4"
-                />
-              </Box>
-              <Box p={2}>
-                <TestimonialItem
-                  headeravatar="/images/testimonials/1.jpg"
-                  headertitle="Shrimp and Chorizo Paella"
-                  headersubtitle="September 14, 2016"
-                  body=" This impressive paella is a perfect party dish and a fun meal to
-                  cook together with your guests. Add 1 cup of frozen peas along
-                  with the mussels, if you like."
-                  value="3.5"
-                />
-              </Box>
-              <Box p={2}>
-                <TestimonialItem
-                  headeravatar="/images/testimonials/1.jpg"
-                  headertitle="Shrimp and Chorizo Paella"
-                  headersubtitle="September 14, 2016"
-                  body=" This impressive paella is a perfect party dish and a fun meal to
-                  cook together with your guests. Add 1 cup of frozen peas along
-                  with the mussels, if you like."
-                  value="5"
-                />
-              </Box>
+              {testimonials.map((item) => (
+                <React.Fragment key={item.id}>
+                  <Box p={2}>
+                    <TestimonialItem
+                      headeravatar={item.headeravatar}
+                      headertitle={item.headertitle}
+                      headersubtitle={item.headersubtitle}
+                      body={item.body}
+                      value={item.rating}
+                    />
+                  </Box>
+                </React.Fragment>
+              ))}
             </Slider>
           </Grid>
         </Grid>
