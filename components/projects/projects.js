@@ -1,4 +1,7 @@
 import React, { Fragment } from "react";
+
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -8,6 +11,9 @@ import Grid from "@material-ui/core/Grid";
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 import ProjectItem from "./projectItem";
 function Projects() {
+  const { sectionHeader, projects } = useSelector(
+    (state) => state.projects.projects
+  );
   return (
     <Box component="section" py={10} id="projects">
       <Container maxWidth="lg">
@@ -16,107 +22,26 @@ function Projects() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={<Fragment>My complete project</Fragment>}
+              subheading={sectionHeader.subheading}
               headingtextalign="center"
-              heading={<Fragment>My Latest Project</Fragment>}
+              heading={sectionHeader.heading}
               bodytextalign="center"
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Repellat voluptas aut facilis a voluptates ad praesentium
-                  corrupti pariatur! Error omnis deserunt quae, reprehenderit
-                  necessitatibus quibusdam molestias sed, voluptas vitae est!
-                  Velit, necessitatibus.
-                </Fragment>
-              }
+              body={sectionHeader.body}
             />
           </Grid>
         </Grid>
         <Grid container spacing={4} justify="center">
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} lg={4}>
-            <ProjectItem
-              image="/images/projects/1.jpg"
-              subtitle={<Fragment>Photoshop</Fragment>}
-              title={<Fragment>Photoshop Design</Fragment>}
-              body={
-                <Fragment>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex
-                  deleniti distinctio sit eum nesciunt dolor.
-                </Fragment>
-              }
-              path="/login"
-            />
-          </Grid>
+          {projects.map((item) => (
+            <Grid item xs={12} sm={6} lg={4}>
+              <ProjectItem
+                image={item.image}
+                subtitle={item.subtitle}
+                title={item.title}
+                body={item.body}
+                path={item.path}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>

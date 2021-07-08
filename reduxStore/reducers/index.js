@@ -6,6 +6,7 @@ import { navMenuListReducer } from "./navMenuListReducers";
 import { heroBannerReducer } from "./heroBannerReducers";
 import { aboutReducer } from "./aboutReducers";
 import { servicesReducer } from "./servicesReducers";
+import { projectsReducer } from "./projectsReducers";
 
 // combine all reducer
 const reducers = {
@@ -14,6 +15,7 @@ const reducers = {
   heroBanner: heroBannerReducer,
   about: aboutReducer,
   services: servicesReducer,
+  projects: projectsReducer,
 };
 
 export default combineReducers(reducers);

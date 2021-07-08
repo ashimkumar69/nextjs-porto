@@ -9,6 +9,7 @@ import {
   getHeroBannerAction,
   getAboutAction,
   getServicesAction,
+  getProjectsAction,
 } from "../reduxStore/actions/index";
 
 // import
@@ -23,6 +24,7 @@ import { getNavMenuList } from "../db/navMenuList";
 import { getHeroBanner } from "../db/heroBanne";
 import { getAbout } from "../db/about";
 import { getServices } from "../db/services";
+import { getProjects } from "../db/projects";
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -34,6 +36,8 @@ function Home(props) {
   dispatch(getAboutAction(props.about));
   // services
   dispatch(getServicesAction(props.services));
+  // projects
+  dispatch(getProjectsAction(props.projects));
 
   return (
     <Fragment>
@@ -53,6 +57,7 @@ export const getStaticProps = async () => {
   const heroBanner = JSON.parse(await getHeroBanner());
   const about = JSON.parse(await getAbout());
   const services = JSON.parse(await getServices());
+  const projects = JSON.parse(await getProjects());
 
   if (!navMenuList) {
     return {
@@ -74,6 +79,11 @@ export const getStaticProps = async () => {
       notFound: true,
     };
   }
+  if (!projects) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -81,6 +91,7 @@ export const getStaticProps = async () => {
       heroBanner,
       about,
       services,
+      projects,
     },
     revalidate: 10,
   };

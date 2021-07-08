@@ -20,7 +20,9 @@ function About() {
   let downMd = useMediaQuery("(max-width:1279.95px)");
 
   // about
-  const about = useSelector((state) => state.about.about);
+  const { image, sectionHeader, tab } = useSelector(
+    (state) => state.about.about
+  );
 
   return (
     <Box component="section" py={10} id="about">
@@ -30,7 +32,7 @@ function About() {
             <Box borderRadius={4}>
               <Box borderRadius={4} clone>
                 <Image
-                  src={about.image}
+                  src={image}
                   alt="hero banner image"
                   width={500}
                   height={560}
@@ -43,15 +45,15 @@ function About() {
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign={downMd ? "center" : "left"}
-              subheading={about.sectionHeader.subheading}
+              subheading={sectionHeader.subheading}
               headingtextalign={downMd ? "center" : "left"}
-              heading={about.sectionHeader.heading}
+              heading={sectionHeader.heading}
               bodytextalign={downMd ? "center" : "left"}
-              body={about.sectionHeader.body}
+              body={sectionHeader.body}
             />
 
             <Box>
-              <Tab tab={about.tab} />
+              <Tab tab={tab} />
             </Box>
           </Grid>
         </Grid>
