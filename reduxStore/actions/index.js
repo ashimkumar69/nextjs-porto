@@ -6,3 +6,4 @@ export { getServicesAction } from "./servicesActions";
 export { getProjectsAction } from "./projectsActions";
 export { getTestimonialsAction } from "./testimonialsActions";
 export { getNewsAction } from "./newsActions";
+export { getContactAction } from "./contactActions";

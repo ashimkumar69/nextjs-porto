@@ -9,6 +9,7 @@ import { servicesReducer } from "./servicesReducers";
 import { projectsReducer } from "./projectsReducers";
 import { testimonialsReducer } from "./testimonialsReducers";
 import { newsReducer } from "./newsReduces";
+import { contactReducer } from "./contactReducers";
 
 // combine all reducer
 const reducers = {
@@ -20,6 +21,7 @@ const reducers = {
   projects: projectsReducer,
   testimonials: testimonialsReducer,
   news: newsReducer,
+  contact: contactReducer,
 };
 
 export default combineReducers(reducers);

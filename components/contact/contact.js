@@ -4,7 +4,8 @@ import React, { Fragment, useRef, useState } from "react";
 // next
 import Image from "next/image";
 import dynamic from "next/dynamic";
-
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -53,6 +54,11 @@ const useStyle = makeStyles((theme) => ({
 
 function Contact() {
   const classes = useStyle();
+
+  const { sectionHeader, image } = useSelector(
+    (state) => state.contact.contact
+  );
+
   const nameInputRef = useRef();
   const emailInputRef = useRef();
   const subjectInputRef = useRef();
@@ -117,22 +123,22 @@ function Contact() {
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign="left"
-              subheading={<Fragment>Let's Say Hi</Fragment>}
+              subheading={sectionHeader.subheading}
               headingtextalign="left"
-              heading={<Fragment>Hire Me.</Fragment>}
+              heading={sectionHeader.heading}
               bodytextalign="left"
               body={
                 <Fragment>
                   <Typography component="span" className={classes.inline}>
                     Call Us:{" "}
                     <Typography component="span" className={classes.fontWeight}>
-                      +555 (0)99 6622 8787
+                      {sectionHeader.body.phone}
                     </Typography>
                   </Typography>
                   <Typography component="span" className={classes.inline}>
                     Email Address:{" "}
                     <Typography component="span" className={classes.fontWeight}>
-                      example@domain.com
+                      {sectionHeader.body.email}
                     </Typography>
                   </Typography>
                 </Fragment>
@@ -238,7 +244,7 @@ function Contact() {
           <Grid item xs={12} md={5} className={classes.grid2}>
             <Box borderRadius={4} clone>
               <Image
-                src="/images/about/2.png"
+                src={image}
                 alt="hero banner image"
                 width={500}
                 height={560}
