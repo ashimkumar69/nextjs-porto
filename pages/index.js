@@ -69,76 +69,75 @@ function Home(props) {
 }
 
 export const getStaticProps = async () => {
-  const navMenuList = JSON.parse(await getNavMenuList());
-  const heroBanner = JSON.parse(await getHeroBanner());
-  const about = JSON.parse(await getAbout());
-  const services = JSON.parse(await getServices());
-  const projects = JSON.parse(await getProjects());
-  const testimonials = JSON.parse(await getTestimonials());
-  const news = JSON.parse(await getNews());
-  const contact = JSON.parse(await getContact());
-  const footer = JSON.parse(await getFooter());
+  try {
+    const data1 = await getNavMenuList();
+    const data2 = await getHeroBanner();
+    const data3 = await getAbout();
+    const data4 = await getServices();
+    const data5 = await getProjects();
+    const data6 = await getTestimonials();
+    const data7 = await getNews();
+    const data8 = await getContact();
+    const data9 = await getFooter();
 
-  if (!navMenuList) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!heroBanner) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!about) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!services) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!projects) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!testimonials) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!news) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!contact) {
-    return {
-      notFound: true,
-    };
-  }
-  if (!footer) {
-    return {
-      notFound: true,
-    };
-  }
+    let [d1, d2, d3, d4, d5, d6, d7, d8, d9] = await Promise.all([
+      data1,
+      data2,
+      data3,
+      data4,
+      data5,
+      data6,
+      data7,
+      data8,
+      data9,
+    ]);
 
-  return {
-    props: {
-      navMenuList,
-      heroBanner,
-      about,
-      services,
-      projects,
-      testimonials,
-      news,
-      contact,
-      footer,
-    },
-    revalidate: 10,
-  };
+    const navMenuList = JSON.parse(d1);
+    const heroBanner = JSON.parse(d2);
+    const about = JSON.parse(d3);
+    const services = JSON.parse(d4);
+    const projects = JSON.parse(d5);
+    const testimonials = JSON.parse(d6);
+    const news = JSON.parse(d7);
+    const contact = JSON.parse(d8);
+    const footer = JSON.parse(d9);
+
+    if (
+      !navMenuList ||
+      !heroBanner ||
+      !about ||
+      !services ||
+      !projects ||
+      !testimonials ||
+      !news ||
+      !contact ||
+      !footer
+    ) {
+      return {
+        notFound: true,
+      };
+    }
+    return {
+      props: {
+        navMenuList,
+        heroBanner,
+        about,
+        services,
+        projects,
+        testimonials,
+        news,
+        contact,
+        footer,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    if (error) {
+      return {
+        notFound: true,
+      };
+    }
+  }
 };
 
 export default Home;

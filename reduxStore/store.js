@@ -14,14 +14,15 @@ import reducers from "./reducers/index";
 // import initial store
 import initialStateDefault from "./initialState/index";
 
+let isComposeWithDevTools =
+  process.env.NEXT_PUBLIC_APP_MODE === "development"
+    ? composeWithDevTools(applyMiddleware(thunkMiddleware))
+    : applyMiddleware(thunkMiddleware);
+
 let store;
 
 function initStore(initialState = initialStateDefault) {
-  return createStore(
-    reducers,
-    initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware))
-  );
+  return createStore(reducers, initialState, isComposeWithDevTools);
 }
 
 export const initializeStore = (preloadedState) => {
