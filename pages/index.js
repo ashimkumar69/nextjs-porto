@@ -13,6 +13,7 @@ import {
   getTestimonialsAction,
   getNewsAction,
   getContactAction,
+  getFooterAction,
 } from "../reduxStore/actions/index";
 
 // import
@@ -31,6 +32,7 @@ import { getProjects } from "../db/projects";
 import { getTestimonials } from "../db/testimonials";
 import { getNews } from "../db/news";
 import { getContact } from "../db/contact";
+import { getFooter } from "../db/footer";
 
 function Home(props) {
   const dispatch = useDispatch();
@@ -50,6 +52,8 @@ function Home(props) {
   dispatch(getNewsAction(props.news));
   // contact
   dispatch(getContactAction(props.contact));
+  // footer
+  dispatch(getFooterAction(props.footer));
 
   return (
     <Fragment>
@@ -73,6 +77,7 @@ export const getStaticProps = async () => {
   const testimonials = JSON.parse(await getTestimonials());
   const news = JSON.parse(await getNews());
   const contact = JSON.parse(await getContact());
+  const footer = JSON.parse(await getFooter());
 
   if (!navMenuList) {
     return {
@@ -114,6 +119,11 @@ export const getStaticProps = async () => {
       notFound: true,
     };
   }
+  if (!footer) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -125,6 +135,7 @@ export const getStaticProps = async () => {
       testimonials,
       news,
       contact,
+      footer,
     },
     revalidate: 10,
   };

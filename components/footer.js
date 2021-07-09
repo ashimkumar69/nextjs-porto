@@ -2,7 +2,8 @@
 import React from "react";
 // next
 import Image from "next/image";
-
+// redux
+import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -57,7 +58,30 @@ const useStyles = makeStyles((theme) => ({
 function Footer() {
   // style
   const classes = useStyles();
+
+  const { footerLogo, footerBrand, icons } = useSelector(
+    (state) => state.footer.footer
+  );
+
   const year = new Date().getFullYear();
+
+  const componentIcon = (index) => {
+    let icon;
+    switch (index) {
+      case 0:
+        return (icon = <FacebookIcon fontSize="small" />);
+      case 1:
+        return (icon = <TwitterIcon fontSize="small" />);
+      case 2:
+        return (icon = <YouTubeIcon fontSize="small" />);
+      case 3:
+        return (icon = <PinterestIcon fontSize="small" />);
+      case 4:
+        return (icon = <GitHubIcon fontSize="small" />);
+    }
+    return icon;
+  };
+
   return (
     <Box
       component="section"
@@ -69,12 +93,7 @@ function Footer() {
         <Grid container justify="space-between" alignItems="center" spacing={2}>
           <Grid item xs={12}>
             <Box display="flex" justifyContent="center">
-              <Image
-                src="/images/logo/footer-logo-01.png"
-                alt="logo"
-                width={160}
-                height={30}
-              />
+              <Image src={footerLogo} alt="logo" width={160} height={30} />
             </Box>
           </Grid>
           <Grid item xs={12}>
@@ -86,53 +105,25 @@ function Footer() {
                   className={classes.copyrightText}
                 >
                   Copyright &copy; {year}{" "}
-                  <Link href="/login" variant="inherit">
-                    Porto
+                  <Link href={footerBrand.path} variant="inherit">
+                    {footerBrand.name}
                   </Link>{" "}
                   Theme. All Rights Reserve.
                 </Typography>
               </Box>
 
               <Box className={classes.iconsBox}>
-                <IconButton
-                  aria-label="Facebook"
-                  className={classes.icon}
-                  href="https://www.facebook.com/"
-                >
-                  <FacebookIcon fontSize="small" />
-                </IconButton>
-
-                <IconButton
-                  aria-label="Twitter"
-                  className={classes.icon}
-                  href="https://twitter.com/"
-                >
-                  <TwitterIcon fontSize="small" />
-                </IconButton>
-
-                <IconButton
-                  aria-label="YouTube"
-                  className={classes.icon}
-                  href="https://www.youtube.com"
-                >
-                  <YouTubeIcon fontSize="small" />
-                </IconButton>
-
-                <IconButton
-                  aria-label="Pinterest"
-                  className={classes.icon}
-                  href="https://www.pinterest.com/"
-                >
-                  <PinterestIcon fontSize="small" />
-                </IconButton>
-
-                <IconButton
-                  aria-label="GitHub"
-                  className={classes.icon}
-                  href="https://github.com/"
-                >
-                  <GitHubIcon fontSize="small" />
-                </IconButton>
+                {icons.map((item, index) => (
+                  <React.Fragment key={item.id}>
+                    <IconButton
+                      aria-label={item.name}
+                      className={classes.icon}
+                      href={item.path}
+                    >
+                      {componentIcon(index)}
+                    </IconButton>
+                  </React.Fragment>
+                ))}
               </Box>
             </Box>
           </Grid>
