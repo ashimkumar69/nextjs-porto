@@ -15,10 +15,9 @@ import reducers from "./reducers/index";
 import initialStateDefault from "./initialState/index";
 
 let isComposeWithDevTools =
-  process.env.NEXT_PUBLIC_APP_MODE === "development"
-    ? composeWithDevTools(applyMiddleware(thunkMiddleware))
-    : applyMiddleware(thunkMiddleware);
-
+  process.env.NEXT_PUBLIC_APP_MODE === "production"
+    ? applyMiddleware(thunkMiddleware)
+    : composeWithDevTools(applyMiddleware(thunkMiddleware));
 let store;
 
 function initStore(initialState = initialStateDefault) {
