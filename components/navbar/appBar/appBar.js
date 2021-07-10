@@ -29,7 +29,7 @@ const LogoButton = withStyles(() => ({
   },
 }))(Button);
 
-function Nav() {
+function Nav(props) {
   return (
     <Fragment>
       <AppBar position="fixed" component="div">
@@ -49,7 +49,7 @@ function Nav() {
                 </Link>
               </Grid>
               <Grid item>
-                <AppMenu />
+                <AppMenu {...props}/>
               </Grid>
               <Grid item>
                 <Box>

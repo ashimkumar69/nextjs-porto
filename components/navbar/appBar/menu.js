@@ -2,8 +2,7 @@ import React from "react";
 
 // nextjs
 import { useRouter } from "next/router";
-// redux
-import { useSelector } from "react-redux";
+
 // material
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -48,15 +47,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AppMenu() {
+function AppMenu(props) {
   // style
   const classes = useStyles();
 
   // nextjs
   const router = useRouter();
-
-  // nav menu list
-  const navMenuList = useSelector((state) => state.navMenuList.navMenuList);
 
   // dropdown menu Level1
   const [anchorElLevel1, setAnchorElLevel1] = React.useState(null);
@@ -145,7 +141,7 @@ function AppMenu() {
         className={classes.menuList}
         offset={-10}
       >
-        {navMenuList.map((item, index) => (
+        {props.navmenulist.map((item, index) => (
           <Box component="li" key={item.id}>
             <Button
               className={classes.menuLinkButton}

@@ -1,7 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-// redux
-import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -70,13 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Testimonials() {
+function Testimonials(props) {
   //material style
   const classes = useStyles();
 
-  const { sectionHeader, testimonials } = useSelector(
-    (state) => state.testimonials.testimonials
-  );
   // slick slider
   const settings = {
     dots: true,
@@ -120,18 +115,18 @@ function Testimonials() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={sectionHeader.subheading}
+              subheading={props.testimonials.sectionHeader.subheading}
               headingtextalign="center"
-              heading={sectionHeader.heading}
+              heading={props.testimonials.sectionHeader.heading}
               bodytextalign="center"
-              body={sectionHeader.body}
+              body={props.testimonials.sectionHeader.body}
             />
           </Grid>
         </Grid>
         <Grid container>
           <Grid item xs={12}>
             <Slider {...settings} className={classes.slickSlider}>
-              {testimonials.map((item) => (
+              {props.testimonials.testimonials.map((item) => (
                 <React.Fragment key={item.id}>
                   <Box p={2}>
                     <TestimonialItem

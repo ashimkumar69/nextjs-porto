@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SwipeableDrawerMenu() {
+function SwipeableDrawerMenu(props) {
   const classes = useStyles();
   const [state, setState] = React.useState(false);
 
@@ -41,7 +41,7 @@ function SwipeableDrawerMenu() {
           onOpen={() => {}}
         >
           <Box className={classes.navListWrapper}>
-            <NavList toggledrawer={toggleDrawer} />
+            <NavList toggledrawer={toggleDrawer} {...props} />
           </Box>
         </SwipeableDrawer>
       </React.Fragment>

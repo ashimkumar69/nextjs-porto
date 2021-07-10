@@ -3,9 +3,7 @@ import React, { Fragment, useRef, useState } from "react";
 
 // next
 import Image from "next/image";
-import dynamic from "next/dynamic";
-// redux
-import { useSelector } from "react-redux";
+
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -52,12 +50,8 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function Contact() {
+function Contact(props) {
   const classes = useStyle();
-
-  const { sectionHeader, image } = useSelector(
-    (state) => state.contact.contact
-  );
 
   const nameInputRef = useRef();
   const emailInputRef = useRef();
@@ -123,22 +117,22 @@ function Contact() {
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign="left"
-              subheading={sectionHeader.subheading}
+              subheading={props.contact.sectionHeader.subheading}
               headingtextalign="left"
-              heading={sectionHeader.heading}
+              heading={props.contact.sectionHeader.heading}
               bodytextalign="left"
               body={
                 <Fragment>
                   <Typography component="span" className={classes.inline}>
                     Call Us:{" "}
                     <Typography component="span" className={classes.fontWeight}>
-                      {sectionHeader.body.phone}
+                      {props.contact.sectionHeader.body.phone}
                     </Typography>
                   </Typography>
                   <Typography component="span" className={classes.inline}>
                     Email Address:{" "}
                     <Typography component="span" className={classes.fontWeight}>
-                      {sectionHeader.body.email}
+                      {props.contact.sectionHeader.body.email}
                     </Typography>
                   </Typography>
                 </Fragment>
@@ -244,7 +238,7 @@ function Contact() {
           <Grid item xs={12} md={5} className={classes.grid2}>
             <Box borderRadius={4} clone>
               <Image
-                src={image}
+                src={props.contact.image}
                 alt="hero banner image"
                 width={500}
                 height={560}

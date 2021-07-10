@@ -1,7 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 
-// redux
-import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -10,10 +8,7 @@ import Grid from "@material-ui/core/Grid";
 // import ;
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 import ProjectItem from "./projectItem";
-function Projects() {
-  const { sectionHeader, projects } = useSelector(
-    (state) => state.projects.projects
-  );
+function Projects(props) {
   return (
     <Box component="section" py={10} id="projects">
       <Container maxWidth="lg">
@@ -22,16 +17,16 @@ function Projects() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={sectionHeader.subheading}
+              subheading={props.projects.sectionHeader.subheading}
               headingtextalign="center"
-              heading={sectionHeader.heading}
+              heading={props.projects.sectionHeader.heading}
               bodytextalign="center"
-              body={sectionHeader.body}
+              body={props.projects.sectionHeader.body}
             />
           </Grid>
         </Grid>
         <Grid container spacing={4} justify="center">
-          {projects.map((item) => (
+          {props.projects.projects.map((item) => (
             <React.Fragment key={item.id}>
               <Grid item xs={12} sm={6} lg={4}>
                 <ProjectItem

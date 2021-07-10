@@ -1,8 +1,7 @@
 import React from "react";
 // next
 import { useRouter } from "next/router";
-// redux
-import { useSelector } from "react-redux";
+
 //material
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -24,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
 function NavList(props) {
   const classes = useStyles();
   const router = useRouter();
-
-  // nav menu list
-  const navMenuList = useSelector((state) => state.navMenuList.navMenuList);
 
   //    selected  list level 1
   const [selectedIndexLevel1, setSelectedIndexLevel1] = React.useState("");
@@ -135,7 +131,7 @@ function NavList(props) {
   return (
     <List component="nav" className={classes.root}>
       {/* level 1 */}
-      {navMenuList.map((item, index) => (
+      {props.navmenulist.map((item, index) => (
         <React.Fragment key={item.id}>
           <ListItem
             button

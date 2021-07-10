@@ -1,10 +1,8 @@
 // react
-import React, { Fragment } from "react";
+import React from "react";
 // next
 import Image from "next/image";
 
-// redux
-import { useSelector } from "react-redux";
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -15,14 +13,9 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Tab from "./tab";
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 
-function About() {
+function About(props) {
   // banner image size in different screen
   let downMd = useMediaQuery("(max-width:1279.95px)");
-
-  // about
-  const { image, sectionHeader, tab } = useSelector(
-    (state) => state.about.about
-  );
 
   return (
     <Box component="section" py={10} id="about">
@@ -32,7 +25,7 @@ function About() {
             <Box borderRadius={4}>
               <Box borderRadius={4} clone>
                 <Image
-                  src={image}
+                  src={props.about.image}
                   alt="hero banner image"
                   width={500}
                   height={560}
@@ -45,15 +38,15 @@ function About() {
             <SectionsHeader
               marginbottom="4"
               subheadingtextalign={downMd ? "center" : "left"}
-              subheading={sectionHeader.subheading}
+              subheading={props.about.sectionHeader.subheading}
               headingtextalign={downMd ? "center" : "left"}
-              heading={sectionHeader.heading}
+              heading={props.about.sectionHeader.heading}
               bodytextalign={downMd ? "center" : "left"}
-              body={sectionHeader.body}
+              body={props.about.sectionHeader.body}
             />
 
             <Box>
-              <Tab tab={tab} />
+              <Tab tab={props.about.tab} />
             </Box>
           </Grid>
         </Grid>

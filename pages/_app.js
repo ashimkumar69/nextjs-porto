@@ -1,6 +1,5 @@
 // react
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 
 // next
 import Head from "next/head";
@@ -10,6 +9,8 @@ import "../styles/globals.scss";
 import Layout from "../components/layout/layout";
 import ThemeWrapper from "../components/themeWrapper";
 import ScrollTop from "../components/scrollTop";
+import PropTypes from "prop-types";
+
 // redux
 import { Provider } from "react-redux";
 import { useStore } from "../reduxStore/store";
@@ -40,7 +41,10 @@ function MyApp(props) {
           name="description"
           content="Portfolio - Porto is a single page Nextjs Static Template"
         />
-        <meta name="keywords" content="nextjs, material-ui, portfolio, porto, static page" />
+        <meta
+          name="keywords"
+          content="nextjs, material-ui, portfolio, porto, static page"
+        />
         <meta name="author" content="ASK" />
 
         {/* google font */}

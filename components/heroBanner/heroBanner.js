@@ -1,7 +1,5 @@
 // react
 import React from "react";
-// redux
-import { useSelector } from "react-redux";
 
 // material
 import Box from "@material-ui/core/Box";
@@ -68,11 +66,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HeroBanner() {
+function HeroBanner(props) {
   //material style
   const classes = useStyles();
-  // heroBanner
-  const heroBanner = useSelector((state) => state.heroBanner.heroBanner);
 
   // slick slider
   const settings = {
@@ -111,7 +107,7 @@ function HeroBanner() {
   return (
     <Box component="section">
       <Slider {...settings} className={classes.slickSlider}>
-        {heroBanner.map((item) => (
+        {props.herobanner.map((item) => (
           <React.Fragment key={item.id}>
             <HeroBannerItem
               image={item.image}

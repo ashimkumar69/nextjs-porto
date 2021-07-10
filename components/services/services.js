@@ -1,7 +1,6 @@
 // react
-import React, { Fragment } from "react";
-// redux
-import { useSelector } from "react-redux";
+import React from "react";
+
 // material
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -17,11 +16,7 @@ import ArtTrackIcon from "@material-ui/icons/ArtTrack";
 import ServiceItem from "./serviceItem";
 import SectionsHeader from "../../components/sectionsHeader/sectionsHeader";
 
-function Services() {
-  const { sectionHeader, services } = useSelector(
-    (state) => state.services.services
-  );
-
+function Services(props) {
   const icon = (index) => {
     let icon;
     switch (index) {
@@ -49,17 +44,17 @@ function Services() {
             <SectionsHeader
               marginbottom="10"
               subheadingtextalign="center"
-              subheading={sectionHeader.subheading}
+              subheading={props.services.sectionHeader.subheading}
               headingtextalign="center"
-              heading={sectionHeader.heading}
+              heading={props.services.sectionHeader.heading}
               bodytextalign="center"
-              body={sectionHeader.body}
+              body={props.services.sectionHeader.body}
             />
           </Grid>
         </Grid>
 
         <Grid container spacing={4} justify="center">
-          {services.map((item, index) => (
+          {props.services.services.map((item, index) => (
             <React.Fragment key={item.id}>
               <Grid item xs={12} sm={6} lg={4}>
                 <ServiceItem

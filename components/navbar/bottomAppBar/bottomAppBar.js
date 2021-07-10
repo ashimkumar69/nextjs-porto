@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BottomAppBar() {
+export default function BottomAppBar(props) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
 
@@ -81,7 +81,7 @@ export default function BottomAppBar() {
         component="div"
       >
         <Toolbar>
-          <SwipeableDrawerMenu />
+          <SwipeableDrawerMenu  {...props}/>
 
           <div className={classes.grow} />
           <SearchMenu />
