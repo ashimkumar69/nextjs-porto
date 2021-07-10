@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import ExperienceListItem from "./listItem/listItem";
 
 function Experiences(props) {
-  console.log(props.experiences);
+
   return (
     <List aria-label="List of experience" disablePadding>
       {props.experiences.map((item, index, array) => (
