@@ -15,7 +15,7 @@ import reducers from "./reducers/index";
 import initialStateDefault from "./initialState/index";
 
 let isComposeWithDevTools =
-  process.env.NEXT_PUBLIC_APP_MODE === "production"
+  process.env.APP_MODE === "production"
     ? applyMiddleware(thunkMiddleware)
     : composeWithDevTools(applyMiddleware(thunkMiddleware));
 let store;
