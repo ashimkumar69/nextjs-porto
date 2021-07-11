@@ -38,7 +38,7 @@ function SwipeableDrawerMenu(props) {
         <SwipeableDrawer
           open={state}
           onClose={() => toggleDrawer(false)}
-          onOpen={() => {}}
+          onOpen={() => toggleDrawer(true)}
         >
           <Box className={classes.navListWrapper}>
             <NavList toggledrawer={toggleDrawer} {...props} />
